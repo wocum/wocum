@@ -1,71 +1,135 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Wocum by wocum</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Wocum</h1>
-        <p></p>
-
-        <p class="view"><a href="https://github.com/wocum/wocum">View the Project on GitHub <small>wocum/wocum</small></a></p>
+<!DOCTYPE html>
+  <html>
+	<head>
+		<title>wocum - google docs powered CMS</title>
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+		<script src="http://listjs.com/js/list.js"></script>
 
 
-        <ul>
-          <li><a href="https://github.com/wocum/wocum/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/wocum/wocum/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/wocum/wocum">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	</head>
+	<body>
+	  <div class="container-fluid" id="content">
+				<div class="row-fluid" id="wocum-content">loading.....</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+	  </div>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+		<script>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+		  function GetURLParameter(sParam) {
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++)
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam)
+				{
+					return sParameterName[1];
+				}
+			}
+		}
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+		var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
+		var slug = GetURLParameter('id') || 'default';
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+		function pageHandler (response) {
+			wocumHTML = response.table.rows[0].c[0].v;
+			document.getElementById("wocum-content").innerHTML = wocumHTML;
+			$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+        		$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20(C%20contains%20%22'+slug+'%22)%20or%20(D%20contains%20%22'+slug+'%22)&tqx=responseHandler:relationsHandler');
+			}
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+    	function miniobjectHandler (response) {
+			wocumHTML = response.table.rows[0].c[0].v;
+			document.getElementById("wocum-content").innerHTML=wocumHTML;
+        	linkify();
+		}
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+		function linkify () {
+        var wikiContents = document.getElementById('content');
+    		wikiContents.innerHTML = wikiContents.innerHTML.wiki2html();
+	    }
+        function relationsHandler (response) {
+			var relations = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof relations !== 'undefined' && relations.length > 0) {
+            document.getElementById("relations-list").innerHTML=relations.join(' ');
+            var showRelations = document.getElementById("relations").style.display = 'inline';
+            }
+            linkify();
+    		var options = {
+    	    	valueNames: [ 'name', 'fields', 'description', 'category' ]
+        	};
+      		var relationsList = new List('relations', options);
+		}
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+	function filesHandler (response) {
+			var files = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof files !== 'undefined' && files.length > 0) {
+            files[0] = files[0].replace("item","active item");
+	    document.getElementById("files-list").innerHTML= files.join('');
+            var showMedia = document.getElementById("media").style.display = 'inline';
+            }
+		}
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+        // the regex beast...
+        function wiki2html(s) {
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/wocum">wocum</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+            s = this;
+
+            // lists need to be done using a function to allow for recusive calls
+            function list(str) {
+                return str.replace(/(?:(?:(?:^|\n)[\*#].*)+)/g, function (m) {  // (?=[\*#])
+                    var type = m.match(/(^|\n)#/) ? 'OL' : 'UL';
+                    // strip first layer of list
+                    m = m.replace(/(^|\n)[\*#][ ]{0,1}/g, "$1");
+                    m = list(m);
+                    return '<' + type + '><li>' + m.replace(/^\n/, '').split(/\n/).join('</li><li>') + '</li></' + type + '>';
+                });
+            }
+
+            return list(s
+                .replace(/\[(.*?)\]/g, function (m, l) { // internal link or image
+                    var p = l.split(/\|/);
+                    var link = p.shift();
+        		  	var linkId = link.replace(/ /g,"-");
+        		  	var linkIdDecoded = encodeURIComponent(linkId);
+                        return '<a href="?key='+gskey+'&id=' + linkIdDecoded + '">' + (p.length ? p.join('|') : link) + '</a>';
+                })
+				);
+
+			}
+
+		</script>
+
+
+        <script>
+
+            (function () {
+                var template = GetURLParameter('template') || 'page';
+                String.prototype.wiki2html = wiki2html;
+                if ( template == 'miniobject' ) {
+                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:miniobjectaHandler');        
+                }
+
+                else if ( template == 'page' ) {
+                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');        
+                }
+
+                else {
+                 document.write('no template defined');
+                }
+            })();
+        </script>
+
+</body>
 </html>
