@@ -44,13 +44,6 @@
 			$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
         		$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20(C%20contains%20%22'+slug+'%22)%20or%20(D%20contains%20%22'+slug+'%22)&tqx=responseHandler:relationsHandler');
 			}
-
-
-    	function miniobjectHandler (response) {
-			wocumHTML = response.table.rows[0].c[0].v;
-			document.getElementById("wocum-content").innerHTML=wocumHTML;
-		}
-
         function relationsHandler (response) {
 			var relations = $.map(response.table.rows, function(item, index) {
 				return item.c[0].v;
@@ -80,18 +73,7 @@
         <script>
 
             (function () {
-                var template = GetURLParameter('template') || 'page';
-                if ( template == 'miniobject' ) {
-                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:miniobjectaHandler');        
-                }
-
-                else if ( template == 'page' ) {
-                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');        
-                }
-
-                else {
-                 document.write('no template defined');
-                }
+                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
             })();
         </script>
 </body>
