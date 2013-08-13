@@ -49,13 +49,8 @@
     	function miniobjectHandler (response) {
 			wocumHTML = response.table.rows[0].c[0].v;
 			document.getElementById("wocum-content").innerHTML=wocumHTML;
-        	linkify();
 		}
 
-		function linkify () {
-        var wikiContents = document.getElementById('content');
-    		wikiContents.innerHTML = wikiContents.innerHTML.wiki2html();
-	    }
         function relationsHandler (response) {
 			var relations = $.map(response.table.rows, function(item, index) {
 				return item.c[0].v;
@@ -64,7 +59,6 @@
             document.getElementById("relations-list").innerHTML=relations.join(' ');
             var showRelations = document.getElementById("relations").style.display = 'inline';
             }
-            linkify();
     		var options = {
     	    	valueNames: [ 'name', 'fields', 'description', 'category' ]
         	};
@@ -80,43 +74,13 @@
 	    document.getElementById("files-list").innerHTML= files.join('');
             var showMedia = document.getElementById("media").style.display = 'inline';
             }
-		}
-
-        // the regex beast...
-        function wiki2html(s) {
-
-            s = this;
-
-            // lists need to be done using a function to allow for recusive calls
-            function list(str) {
-                return str.replace(/(?:(?:(?:^|\n)[\*#].*)+)/g, function (m) {  // (?=[\*#])
-                    var type = m.match(/(^|\n)#/) ? 'OL' : 'UL';
-                    // strip first layer of list
-                    m = m.replace(/(^|\n)[\*#][ ]{0,1}/g, "$1");
-                    m = list(m);
-                    return '<' + type + '><li>' + m.replace(/^\n/, '').split(/\n/).join('</li><li>') + '</li></' + type + '>';
-                });
-            }
-
-            return list(s
-                .replace(/\[(.*?)\]/g, function (m, l) { // internal link or image
-                    var p = l.split(/\|/);
-                    var link = p.shift();
-        		  	var linkId = link.replace(/ /g,"-");
-        		  	var linkIdDecoded = encodeURIComponent(linkId);
-                        return '<a href="?key='+gskey+'&id=' + linkIdDecoded + '">' + (p.length ? p.join('|') : link) + '</a>';
-                })
-				);
-
-			}
-
-		</script>
+	}
+</script>
 
         <script>
 
             (function () {
                 var template = GetURLParameter('template') || 'page';
-                String.prototype.wiki2html = wiki2html;
                 if ( template == 'miniobject' ) {
                     $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:miniobjectaHandler');        
                 }
@@ -128,22 +92,6 @@
                 else {
                  document.write('no template defined');
                 }
-                       var timeline_config = {
-		            width:              '100%',
-		            height:             '600',
-		            source:             'path_to_json/or_link_to_googlespreadsheet',
-		            embed_id:           'timeline-embed',               //OPTIONAL USE A DIFFERENT DIV ID FOR EMBED
-		            start_at_end:       false,                          //OPTIONAL START AT LATEST DATE
-		            start_at_slide:     '4',                            //OPTIONAL START AT SPECIFIC SLIDE
-		            start_zoom_adjust:  '3',                            //OPTIONAL TWEAK THE DEFAULT ZOOM LEVEL
-		            hash_bookmark:      true,                           //OPTIONAL LOCATION BAR HASHES
-		            font:               'Bevan-PotanoSans',             //OPTIONAL FONT
-		            debug:              true,                           //OPTIONAL DEBUG TO CONSOLE
-		            lang:               'fr',                           //OPTIONAL LANGUAGE
-		            maptype:            'watercolor',                   //OPTIONAL MAP STYLE
-		            css:                'path_to_css/timeline.css',     //OPTIONAL PATH TO CSS
-		            js:                 'path_to_js/timeline-min.js'    //OPTIONAL PATH TO JS
-		        }
             })();
         </script>
 </body>
