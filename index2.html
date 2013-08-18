@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+  <html>
+	<head>
+		<meta charset="utf-8">
+		<title>wocum - google docs powered CMS</title>
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+		<script src="http://listjs.com/js/list.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.2/fullcalendar.min.js"></script>
+		<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.2/fullcalendar.css" rel="stylesheet">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/js/storyjs-embed.js"></script>
+		<link href="//cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/css/themes/font/Arvo-PTSans.css" rel="stylesheet">
+		<script src="http://reclinejs.com/dist/recline.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+	</head>
+	<body>
+	  <div class="container-fluid" id="content">
+				<script id="wocum" type="text/x-handlebars-template">
+					{{name}}
+				</script>
+				<div class="row-fluid" id="wocum-content">loading...</div>
+	  </div>
+<script>
+//Objeto con la información a mostrar en el template.
+var data = {
+    "name": "what is wocum",
+    "description": "<!DOCTYPE><html><p class='c5'><span>((hidden=navbar))</span></p><p class='c5 c15'><span class='c11'>wocum is a google drive based ((link=/CMS)) that makes creating a website as easy as editing a doc. Try our </span><span class='c3'><a class='c1' href='https://googledrive.com/host/0B0YWdwxH6K5XMVB6RXpLOHJHYUk/?key=t85I-94hid3OcJfqPnCHlog&amp;id=demo' shape='rect'>demo</a></span><span class='c11'> now.</span></p><p class='c5 c15'><img height='249' src='https://docs.google.com/drawings/image?id=sLC1RDtBQKTXnBzpeMWNFWA&amp;rev=287&amp;h=249&amp;w=645&amp;ac=1' width='645'/></p><p class='c5 c15 c8'><span class='c11'/></p></html>",
+    "hidden": "navbar",
+    "link": "/CMS"
+};
+
+//Obtiene el contenido del template declarado definido en etiquetas script.
+//Utilizando jquery sería: var template = $("#movies-tmp").html();
+var template = document.getElementById("movies-tmp").innerHTML;
+
+//Compila el template usando el método compile.
+var templateCompile = Handlebars.compile(template);
+
+//Inyecta la información en el template compilado y realizar los reemplados.
+var result = templateCompile(data);
+
+//Insertamos el resultado en el body del documento.
+//Utilizando jQuery sería: $("body").append(result);
+document.body.insertAdjacentHTML("beforeend", result);
+</script>
+		<script type="text/javascript">
+
+		  function GetURLParameter(sParam) {
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++)
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam)
+				{
+					return sParameterName[1];
+				}
+			}
+		}
+
+		var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
+		var slug = GetURLParameter('id') || 'default';
+
+		function pageHandler (response) {
+			wocumHTML = response.table.rows[0].c[0].v;
+			document.getElementById("wocum-content").innerHTML = wocumHTML;
+			$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+        		$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20(C%20contains%20%22'+slug+'%22)%20or%20(D%20contains%20%22'+slug+'%22)&tqx=responseHandler:relationsHandler');
+			}
+        function relationsHandler (response) {
+			var relations = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof relations !== 'undefined' && relations.length > 0) {
+            document.getElementById("relations-list").innerHTML=relations.join(' ');
+            var showRelations = document.getElementById("relations").style.display = 'inline';
+            }
+    		var options = {
+    	    	valueNames: [ 'name', 'fields', 'description', 'category' ]
+        	};
+      		var relationsList = new List('relations', options);
+		}
+
+	function filesHandler (response) {
+			var files = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof files !== 'undefined' && files.length > 0) {
+            files[0] = files[0].replace("item","active item");
+	    document.getElementById("files-list").innerHTML= files.join('');
+            var showMedia = document.getElementById("media").style.display = 'inline';
+            }
+	}
+</script>
+
+        <script>
+
+            (function () {
+                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+            })();
+        </script>
+</body>
+</html>
