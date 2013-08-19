@@ -16,6 +16,8 @@
 	</head>
 	<body>
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+<script id="handlebars-template" type="text/x-handlebars-template">{{name}}</script>
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
 <div id="wocum">loading...</div>
 <script type="text/javascript">
 function GetURLParameter(sParam) {
@@ -35,8 +37,14 @@ var slug = GetURLParameter('id') || 'default'
 function pageHandler (response) {
 	wocumHTML = response.table.rows[0].c[0].v;
 	window.alert(wocumHTML);
-	document.getElementById("wocum").innerHTML = wocumHTML;
+//	document.getElementById("wocum").innerHTML = wocumHTML;
 	window.alert('pagehandler rocks');
+	
+	var source   = $("#handlebars-template").html();
+	var template = Handlebars.compile(source);
+	var context = {name: "My New Post", body: "This is my first post!"}
+	var handlebarsHTML    = template(context);
+	document.getElementById("wocum").innerHTML = handlebarsHTML;
 }
 </script>
 <script>
