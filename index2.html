@@ -50,11 +50,11 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 		function pageHandler (response) {
 			wocumHTML = response.table.rows[0].c[0].v;
 			document.getElementById("wocum-content").innerHTML = wocumHTML;
-			$.getScript('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt&tqx=responseHandler:JSONHandler');
+//			$.getScript('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt&tqx=responseHandler:JSONHandler');
 			$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
         		$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20(C%20contains%20%22'+slug+'%22)%20or%20(D%20contains%20%22'+slug+'%22)&tqx=responseHandler:relationsHandler');
 			window.alert('pagehandler rocks');
-			var testvar = $.getScript('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt');
+			var testvar = $.getJSON('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt');
 			window.alert(testvar);
 			
 			var data = testvar;
