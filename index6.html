@@ -38,7 +38,7 @@ function pageHandler (response) {
 	wocumTemplate = response.table.rows[0].c[0].v;
 	wocumJSON = response.table.rows[0].c[1].v;
 	window.alert(wocumTemplate);
-	window.alert(wocumjson);
+	window.alert(wocumJSON);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
 	var source   = $("#handlebars-template").html();
 	var template = Handlebars.compile(source);
