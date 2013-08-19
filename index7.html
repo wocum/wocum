@@ -41,7 +41,7 @@ function pageHandler (response) {
 	window.alert(wocumJSON);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
 	var source   = $("#handlebars-template").html();
-	var template = Handlebars.compile(source);
+	var template = Handlebars.compile(wocumTemplate);
 //	var context = {name: "My New Post", body: "This is my first post!"}
 	var context = jQuery.parseJSON(wocumJSON);
 	var handlebarsHTML    = template(context);
