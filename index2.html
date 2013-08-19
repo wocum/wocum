@@ -19,7 +19,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
 	</head>
 	<body>
-				<script id="wocum" type="text/x-handlebars-template">
+				<script id="wocum-handlebars-template" type="text/x-handlebars-template">
 					{{name}}
 				</script>
 				<div id="json-content">ffffff</div>
@@ -61,8 +61,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 			
 			//Obtiene el contenido del template declarado definido en etiquetas script.
 			//Utilizando jquery sería: var template = $("#movies-tmp").html();
-			var template = document.getElementById("wocum").innerHTML;
-			
+			var template = document.getElementById("wocum-handlebars-template").innerHTML;
+			window.alert(template);			
 			//Compila el template usando el método compile.
 			var templateCompile = Handlebars.compile(template);
 			
