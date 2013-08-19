@@ -38,6 +38,7 @@ function pageHandler (response) {
 	document.getElementById("wocum-content").innerHTML = wocumHTML;
 	window.alert('pagehandler rocks');
 }
+</script>
 <script>
     (function () {
             $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
