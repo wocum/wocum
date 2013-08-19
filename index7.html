@@ -35,8 +35,8 @@ function GetURLParameter(sParam) {
 var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
 var slug = GetURLParameter('id') || 'default'
 function pageHandler (response) {
-	wocumTemplate = response.table.rows[0].c[0].v;
-	wocumJSON = response.table.rows[0].c[1].v;
+	wocumJSON = response.table.rows[0].c[0].v;
+	wocumTemplate = response.table.rows[0].c[1].v;
 	window.alert(wocumTemplate);
 	window.alert(wocumJSON);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
