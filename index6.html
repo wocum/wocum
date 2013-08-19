@@ -37,10 +37,9 @@ var slug = GetURLParameter('id') || 'default'
 function pageHandler (response) {
 	wocumTemplate = response.table.rows[0].c[0].v;
 	wocumJSON = response.table.rows[0].c[1].v;
-	window.alert(wocumHTML);
+	window.alert(wocumTemplate);
+	window.alert(wocumjson);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
-	window.alert('pagehandler rocks');
-
 	var source   = $("#handlebars-template").html();
 	var template = Handlebars.compile(source);
 //	var context = {name: "My New Post", body: "This is my first post!"}
