@@ -17,11 +17,27 @@
 		<link href="//cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/css/themes/font/Arvo-PTSans.css" rel="stylesheet">
 		<script src="http://reclinejs.com/dist/recline.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.1.0/tabletop.min.js"></script>
 	</head>
 	<body>
 				<script id="wocum-handlebars-template" type="text/x-handlebars-template">
 					{{name}}
 				</script>
+				<script type="text/javascript">
+  window.onload = function() { init() };
+
+  var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&output=html';
+  function init() {
+    Tabletop.init( { key: public_spreadsheet_url,
+             callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    alert("Successfully processed!")
+    console.log(data);
+  }
+</script>
 				<div id="json-content">ffffff</div>
 	  <div class="container-fluid" id="content">
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -72,7 +88,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 			//Insertamos el resultado en el body del documento.
 			//Utilizando jQuery sería: $("body").append(result);
 			document.body.insertAdjacentHTML("beforeend", result);
-			document.getElementById("json-content").innerHTML = result+'uuuuuu';
+			document.getElementById("json-content").innerHTML = template + result+'uuuuuu';
 			}
 
         function relationsHandler (response) {
