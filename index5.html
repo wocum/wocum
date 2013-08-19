@@ -36,15 +36,15 @@ var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09w
 var slug = GetURLParameter('id') || 'default'
 function pageHandler (response) {
 	wocumTemplate = response.table.rows[0].c[0].v;
-	wocumHTML = response.table.rows[0].c[1].v;
+	wocumJSON = response.table.rows[0].c[1].v;
 	window.alert(wocumHTML);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
 	window.alert('pagehandler rocks');
 	
-	var source   = wocumTemplate.html();
+	var source   = wocumTemplate;
 	var template = Handlebars.compile(source);
 //	var context = {name: "My New Post", body: "This is my first post!"}
-	var context = jQuery.parseJSON(wocumHTML);
+	var context = jQuery.parseJSON(wocumJSON);
 	var handlebarsHTML    = template(context);
 	document.getElementById("wocum").innerHTML = handlebarsHTML;
 }
