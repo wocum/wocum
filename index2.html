@@ -56,11 +56,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 			window.alert('pagehandler rocks');
 			var testvar = $.getScript('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt');
 			window.alert(testvar);
-			window.alert('jsonhandler rocks');
-			wocumJSON = testvar.v;
-			//document.getElementById("wocum").innerHTML = wocumJSON;
-			//Objeto con la información a mostrar en el template.
-			var data = wocumJSON;
+			
+			var data = testvar;
 			
 			//Obtiene el contenido del template declarado definido en etiquetas script.
 			//Utilizando jquery sería: var template = $("#movies-tmp").html();
