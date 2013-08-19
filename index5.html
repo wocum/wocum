@@ -42,9 +42,11 @@ function pageHandler (response) {
 //	document.getElementById("wocum").innerHTML = wocumHTML;
 	var source   = wocumTemplate;
 	var template = Handlebars.compile(source);
+	window.alert(template);
 //	var context = {name: "My New Post", body: "This is my first post!"}
 	var context = jQuery.parseJSON(wocumJSON);
 	var handlebarsHTML    = template(context);
+	window.alert(handlebarsHTML);
 	document.getElementById("wocum").innerHTML = handlebarsHTML;
 }
 </script>
@@ -56,4 +58,3 @@ function pageHandler (response) {
 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
 </body>
 </html>
-0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWk
