@@ -56,10 +56,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 			window.alert('pagehandler rocks');
 			var testvar = $.getScript('http://docs.google.com/spreadsheet/pub?key=0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWkE&single=true&gid=66&output=txt');
 			window.alert(testvar);
-			}
-		function JSONHandler (response) {
 			window.alert('jsonhandler rocks');
-			wocumJSON = response.table.rows[0].c[0].v;
+			wocumJSON = testvar.v;
 			//document.getElementById("wocum").innerHTML = wocumJSON;
 			//Objeto con la información a mostrar en el template.
 			var data = wocumJSON;
