@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <html>
+	<head>
+		<meta charset="utf-8">
+		<title>wocum - google docs powered CMS</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+		<script src="http://listjs.com/js/list.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.1.0/tabletop.min.js"></script>
+	</head>
+	<body>
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+<div id="wocum">loading...</div>
+<script type="text/javascript">
+function GetURLParameter(sParam) {
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++)
+	{
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam)
+		{
+			return sParameterName[1];
+		}
+	}
+}
+var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
+var slug = GetURLParameter('id') || 'default'
+function pageHandler (response) {
+	wocumHTML = response.table.rows[0].c[0].v;
+	window.alert(wocumHTML);
+	document.getElementById("wocum").innerHTML = wocumHTML;
+	window.alert('pagehandler rocks');
+}
+</script>
+<script>
+    (function () {
+            $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+    })()
+</script>
+zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+</body>
+</html>
+0AkYWdwxH6K5XdEJzTnJMRHAtOHJVM3ZjYTNsX0NWWk
