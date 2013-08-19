@@ -40,8 +40,8 @@ function pageHandler (response) {
 	window.alert(wocumTemplate);
 	window.alert(wocumJSON);
 //	document.getElementById("wocum").innerHTML = wocumHTML;
-	var source   = wocumTemplate;
-	var template = Handlebars.compile(wocumTemplate);
+	var source   = ~$(wocumTemplate).(html);
+	var template = Handlebars.compile(source);
 	window.alert(template);
 //	var context = {name: "My New Post", body: "This is my first post!"}
 	var context = jQuery.parseJSON(wocumJSON);
