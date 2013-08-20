@@ -1,76 +1,81 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
+  <html>
+	<head>
+		<meta charset="utf-8">
+		<title>wocum - google docs powered CMS</title>
+    		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+		<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+		<script src="http://listjs.com/js/list.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.2/fullcalendar.min.js"></script>
+		<link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/1.6.2/fullcalendar.css" rel="stylesheet">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/js/storyjs-embed.js"></script>
+		<link href="//cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/css/themes/font/Arvo-PTSans.css" rel="stylesheet">
+		<script src="http://reclinejs.com/dist/recline.js"></script>
+	</head>
+	<body>
+	  <div class="container-fluid" id="content">
+				<div class="row-fluid" id="wocum-content">loading...</div>
+	  </div>
+		<script type="text/javascript">
 
-	<!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
-	<title>Your Page Title Here :)</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+		  function GetURLParameter(sParam) {
+			var sPageURL = window.location.search.substring(1);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++)
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] == sParam)
+				{
+					return sParameterName[1];
+				}
+			}
+		}
 
-	<!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
+		var slug = GetURLParameter('id') || 'default';
 
-	<!-- CSS
-  ================================================== -->
-	<link rel="stylesheet" href="stylesheets/base.css">
-	<link rel="stylesheet" href="stylesheets/skeleton.css">
-	<link rel="stylesheet" href="stylesheets/layout.css">
+		function pageHandler (response) {
+			wocumHTML = response.table.rows[0].c[0].v;
+			document.getElementById("wocum-content").innerHTML = wocumHTML;
+			$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+        		$.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:F&tq=select%20F%20where%20(C%20contains%20%22'+slug+'%22)%20or%20(D%20contains%20%22'+slug+'%22)&tqx=responseHandler:relationsHandler');
+			}
+        function relationsHandler (response) {
+			var relations = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof relations !== 'undefined' && relations.length > 0) {
+            document.getElementById("relations-list").innerHTML=relations.join(' ');
+            var showRelations = document.getElementById("relations").style.display = 'inline';
+            }
+    		var options = {
+    	    	valueNames: [ 'name', 'fields', 'description', 'category' ]
+        	};
+      		var relationsList = new List('relations', options);
+		}
 
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+	function filesHandler (response) {
+			var files = $.map(response.table.rows, function(item, index) {
+				return item.c[0].v;
+			});
+            if (typeof files !== 'undefined' && files.length > 0) {
+            files[0] = files[0].replace("item","active item");
+	    document.getElementById("files-list").innerHTML= files.join('');
+            var showMedia = document.getElementById("media").style.display = 'inline';
+            }
+	}
+</script>
 
-	<!-- Favicons
-	================================================== -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+        <script>
 
-</head>
-<body>
-
-
-
-	<!-- Primary Page Layout
-	================================================== -->
-
-	<!-- Delete everything in this .container and get started on your own site! -->
-
-	<div class="container">
-		<div class="sixteen columns">
-			<h1 class="remove-bottom" style="margin-top: 40px">Skeleton</h1>
-			<h5>Version 1.2</h5>
-			<hr />
-		</div>
-		<div class="one-third column">
-			<h3>About Skeleton?</h3>
-			<p>Skeleton is a small collection of well-organized CSS files that can help you rapidly develop sites that look beautiful at any size, be it a 17" laptop screen or an iPhone. It's based on a responsive grid, but also provides very basic CSS for typography, buttons, forms and media queries. Go ahead, resize this super basic page to see the grid in action.</p>
-		</div>
-		<div class="one-third column">
-			<h3>Three Core Principles</h3>
-			<p>Skeleton is built on three core principles:</p>
-			<ul class="square">
-				<li><strong>A Responsive Grid Down To Mobile</strong>: Elegant scaling from a browser to tablets to mobile.</li>
-				<li><strong>Fast to Start</strong>: It's a tool for rapid development with best practices</li>
-				<li><strong>Style Agnostic</strong>: It provides the most basic, beautiful styles, but is meant to be overwritten.</li>
-			</ul>
-		</div>
-		<div class="one-third column">
-			<h3>Docs &amp; Support</h3>
-			<p>The easiest way to really get started with Skeleton is to check out the full docs and info at <a href="http://www.getskeleton.com">www.getskeleton.com.</a>. Skeleton is also open-source and has a <a href="https://github.com/dhgamache/skeleton">project on git</a>, so check that out if you want to report bugs or create a pull request. If you have any questions, thoughts, concerns or feedback, please don't hesitate to email me at <a href="mailto:hi@getskeleton.com">hi@getskeleton.com</a>.</p>
-		</div>
-
-	</div><!-- container -->
-
-
-<!-- End Document
-================================================== -->
+            (function () {
+                    $.getScript('https://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:B&tq=select%20B%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+            })();
+        </script>
 </body>
 </html>
