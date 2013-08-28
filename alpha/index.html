@@ -28,7 +28,7 @@
 	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
 </head>
-<body style="">
+<body>
 <div class="container">
   <div id="wocum"></div>
 </div>
@@ -81,6 +81,7 @@ document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully yo
 }
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq=select+B+where+B+contains+\':\"'+slug+'\"\'&tqx=responseHandler:incomingRelationsHandler');
+
 function filesHandler (response) {
 var files = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
