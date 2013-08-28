@@ -98,7 +98,7 @@ return item.c[0].v;
 });
 incomingRelations = '{"relations":['+incomingRelations+']}';  
 if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
-var template = Handlebars.compile("{{#each relations}}<li id='{{id}}' class='{{type}}-wocum-card'><div><h4><img src='{{type_image}}' alt='type image' style='height:16px;float:left;padding-right:5px'><strong><a href='{{url}}'>{{name}}</a></strong></h4></div><div style='overflow:auto'>{{#if image}}<img src='{{image}}' alt='image' class='thumbnail'>{{/if}}<p class='excerpt'>{{excerpt}}</p><p class='fields'>{{{fields}}}</p></div>{{/each}}");
+var template = Handlebars.compile("{{#each relations}}<li id='{{id}}' class='{{type}}-wocum-card'><div><h4>{{#if type_image}}<img src='{{type_image}}' alt='type image' style='height:16px;float:left;padding-right:5px'>{{/if}}<strong><a href='{{url}}'>{{name}}</a></strong></h4></div><div style='overflow:auto'>{{#if image}}<img src='{{image}}' alt='image' class='thumbnail'>{{/if}}<p class='excerpt'>{{excerpt}}</p><p class='fields'>{{{fields}}}</p></div>{{/each}}");
 var context = jQuery.parseJSON(incomingRelations);
 var handlebarsHTML    = template(context);
 document.getElementById("relations-list").innerHTML=handlebarsHTML;
