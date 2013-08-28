@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]--><!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]--><!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]--><!--[if (gte IE 9)|!(IE)]><!--><!--<![endif]--><head>
+	<!-- Mobile Specific Metas-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- CSS -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+  <!-- Wocum -->
+	<meta charset="utf-8">
+	<meta name="description" content="google drive powered CMS">
+	<meta name="author" content="wocum.com">
+  <title>wocum - google drive powered CMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+</head>
+<body style="">
+<div class="container">
+  <div id="wocum"><style type="text/css">@import url('https://themes.googleusercontent.com/fonts/css?kit=Lx1xfUTR4qFjwg0Z_pb901bqibjAC9TcrSzAoXtxa2E');ul.lst-kix_1kz92fjm5fe6-7{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-8{list-style-type:none}.lst-kix_yx31o6fuc5yb-3&gt;li:before{content:"\0025cf  "}.lst-kix_8id6ri3060ax-8&gt;li:before{content:"\0025a0  "}ul.lst-kix_1kz92fjm5fe6-1{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-2{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-0{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-5{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-6{list-style-type:none}.lst-kix_yx31o6fuc5yb-7&gt;li:before{content:"\0025cb  "}ul.lst-kix_1kz92fjm5fe6-3{list-style-type:none}ul.lst-kix_1kz92fjm5fe6-4{list-style-type:none}.lst-kix_yx31o6fuc5yb-0&gt;li:before{content:"\0025cf  "}ul.lst-kix_8id6ri3060ax-3{list-style-type:none}ul.lst-kix_8id6ri3060ax-4{list-style-type:none}ul.lst-kix_8id6ri3060ax-1{list-style-type:none}.lst-kix_8id6ri3060ax-5&gt;li:before{content:"\0025a0  "}ul.lst-kix_8id6ri3060ax-2{list-style-type:none}ul.lst-kix_8id6ri3060ax-7{list-style-type:none}ul.lst-kix_8id6ri3060ax-8{list-style-type:none}.lst-kix_yx31o6fuc5yb-4&gt;li:before{content:"\0025cb  "}ul.lst-kix_8id6ri3060ax-5{list-style-type:none}ul.lst-kix_8id6ri3060ax-6{list-style-type:none}.lst-kix_yx31o6fuc5yb-2&gt;li:before{content:"\0025a0  "}ul.lst-kix_8id6ri3060ax-0{list-style-type:none}.lst-kix_8id6ri3060ax-3&gt;li:before{content:"\0025cf  "}ul.lst-kix_d0pv9it4vnkh-5{list-style-type:none}.lst-kix_urr3op8sgh5-4&gt;li:before{content:"\0025cb  "}ul.lst-kix_d0pv9it4vnkh-4{list-style-type:none}.lst-kix_d0pv9it4vnkh-4&gt;li:before{content:"\0025cb  "}ul.lst-kix_d0pv9it4vnkh-3{list-style-type:none}ul.lst-kix_d0pv9it4vnkh-2{list-style-type:none}.lst-kix_1kz92fjm5fe6-2&gt;li:before{content:"\0025a0  "}ul.lst-kix_d0pv9it4vnkh-8{list-style-type:none}ul.lst-kix_d0pv9it4vnkh-7{list-style-type:none}ul.lst-kix_d0pv9it4vnkh-6{list-style-type:none}.lst-kix_urr3op8sgh5-6&gt;li:before{content:"\0025cf  "}ul.lst-kix_d0pv9it4vnkh-1{list-style-type:none}ul.lst-kix_d0pv9it4vnkh-0{list-style-type:none}.lst-kix_1kz92fjm5fe6-0&gt;li:before{content:"\0025cf  "}.lst-kix_d0pv9it4vnkh-0&gt;li:before{content:"\0025cf  "}.lst-kix_urr3op8sgh5-1&gt;li:before{content:"\0025cb  "}.lst-kix_8id6ri3060ax-6&gt;li:before{content:"\0025cf  "}.lst-kix_d0pv9it4vnkh-6&gt;li:before{content:"\0025cf  "}.lst-kix_urr3op8sgh5-0&gt;li:before{content:"\0025cf  "}.lst-kix_d0pv9it4vnkh-1&gt;li:before{content:"\0025cb  "}.lst-kix_8id6ri3060ax-4&gt;li:before{content:"\0025cb  "}.lst-kix_yx31o6fuc5yb-6&gt;li:before{content:"\0025cf  "}ul.lst-kix_yx31o6fuc5yb-6{list-style-type:none}ul.lst-kix_yx31o6fuc5yb-5{list-style-type:none}ul.lst-kix_yx31o6fuc5yb-4{list-style-type:none}.lst-kix_yx31o6fuc5yb-5&gt;li:before{content:"\0025a0  "}ul.lst-kix_yx31o6fuc5yb-3{list-style-type:none}.lst-kix_d0pv9it4vnkh-2&gt;li:before{content:"\0025a0  "}ul.lst-kix_yx31o6fuc5yb-8{list-style-type:none}.lst-kix_yx31o6fuc5yb-8&gt;li:before{content:"\0025a0  "}ul.lst-kix_yx31o6fuc5yb-7{list-style-type:none}.lst-kix_8id6ri3060ax-7&gt;li:before{content:"\0025cb  "}.lst-kix_d0pv9it4vnkh-8&gt;li:before{content:"\0025a0  "}.lst-kix_d0pv9it4vnkh-7&gt;li:before{content:"\0025cb  "}.lst-kix_8id6ri3060ax-1&gt;li:before{content:"\0025cb  "}.lst-kix_urr3op8sgh5-5&gt;li:before{content:"\0025a0  "}ul.lst-kix_yx31o6fuc5yb-1{list-style-type:none}ul.lst-kix_yx31o6fuc5yb-2{list-style-type:none}ul.lst-kix_yx31o6fuc5yb-0{list-style-type:none}ul.lst-kix_urr3op8sgh5-1{list-style-type:none}ul.lst-kix_urr3op8sgh5-2{list-style-type:none}.lst-kix_urr3op8sgh5-2&gt;li:before{content:"\0025a0  "}.lst-kix_1kz92fjm5fe6-4&gt;li:before{content:"\0025cb  "}ul.lst-kix_urr3op8sgh5-0{list-style-type:none}ul.lst-kix_urr3op8sgh5-5{list-style-type:none}.lst-kix_1kz92fjm5fe6-1&gt;li:before{content:"\0025cb  "}ul.lst-kix_urr3op8sgh5-6{list-style-type:none}.lst-kix_1kz92fjm5fe6-5&gt;li:before{content:"\0025a0  "}ul.lst-kix_urr3op8sgh5-3{list-style-type:none}.lst-kix_1kz92fjm5fe6-7&gt;li:before{content:"\0025cb  "}ul.lst-kix_urr3op8sgh5-4{list-style-type:none}.lst-kix_urr3op8sgh5-8&gt;li:before{content:"\0025a0  "}.lst-kix_8id6ri3060ax-0&gt;li:before{content:"\0025cf  "}ul.lst-kix_urr3op8sgh5-7{list-style-type:none}.lst-kix_yx31o6fuc5yb-1&gt;li:before{content:"\0025cb  "}ul.lst-kix_urr3op8sgh5-8{list-style-type:none}.lst-kix_1kz92fjm5fe6-6&gt;li:before{content:"\0025cf  "}.lst-kix_d0pv9it4vnkh-5&gt;li:before{content:"\0025a0  "}.lst-kix_urr3op8sgh5-3&gt;li:before{content:"\0025cf  "}.lst-kix_1kz92fjm5fe6-8&gt;li:before{content:"\0025a0  "}.lst-kix_8id6ri3060ax-2&gt;li:before{content:"\0025a0  "}.lst-kix_d0pv9it4vnkh-3&gt;li:before{content:"\0025cf  "}.lst-kix_1kz92fjm5fe6-3&gt;li:before{content:"\0025cf  "}.lst-kix_urr3op8sgh5-7&gt;li:before{content:"\0025cb  "}ol{margin:0;padding:0}.c4{vertical-align:top;width:52pt;border-style:solid;border-color:#000000;border-width:1pt;padding:5pt 5pt 5pt 5pt}.c0{padding-left:0pt;direction:ltr;margin-left:72pt}.c25{max-width:468pt;background-color:#ffffff;padding:72pt 72pt 72pt 72pt}.c7{padding-left:0pt;margin-left:36pt}.c6{margin:0;padding:0}.c16{font-size:13pt;font-family:"Trebuchet MS"}.c17{padding-left:0pt;margin-left:144pt}.c1{line-height:1.0;direction:ltr}.c9{color:#1155cc;text-decoration:underline}.c11{padding-left:0pt;margin-left:108pt}.c15{color:inherit;text-decoration:inherit}.c14{color:#0000ff;font-style:italic}.c12{font-size:36pt;font-family:"Helvetica Neue"}.c19{font-size:10pt;background-color:#ffffff}.c24{height:16pt}.c5{height:11pt}.c3{font-weight:bold}.c10{color:#073763}.c20{font-size:48pt}.c23{color:#ff0000}.c2{direction:ltr}.c22{height:0pt}.c13{line-height:1.5}.c8{color:#b45f06}.c18{font-style:italic}.c21{border-collapse:collapse}.title{padding-top:0pt;line-height:1.15;text-align:left;color:#000000;font-size:21pt;font-family:"Trebuchet MS";padding-bottom:0pt}.subtitle{padding-top:0pt;line-height:1.15;text-align:left;color:#666666;font-style:italic;font-size:13pt;font-family:"Trebuchet MS";padding-bottom:10pt}li{color:#000000;font-size:11pt;font-family:"Arial"}p{color:#000000;font-size:11pt;margin:0;font-family:"Arial"}h1{padding-top:10pt;line-height:1.15;text-align:left;color:#000000;font-size:16pt;font-family:"Trebuchet MS";padding-bottom:0pt}h2{padding-top:10pt;line-height:1.15;text-align:left;color:#000000;font-size:13pt;font-family:"Trebuchet MS";font-weight:bold;padding-bottom:0pt}h3{padding-top:8pt;line-height:1.15;text-align:left;color:#666666;font-size:12pt;font-family:"Trebuchet MS";font-weight:bold;padding-bottom:0pt}h4{padding-top:8pt;line-height:1.15;text-align:left;color:#666666;font-size:11pt;text-decoration:underline;font-family:"Trebuchet MS";padding-bottom:0pt}h5{padding-top:8pt;line-height:1.15;text-align:left;color:#666666;font-size:11pt;font-family:"Trebuchet MS";padding-bottom:0pt}h6{padding-top:8pt;line-height:1.15;text-align:left;color:#666666;font-style:italic;font-size:11pt;font-family:"Trebuchet MS";padding-bottom:0pt}</style><style type="text/css">body{padding-top:70px}.wocum-div{}h1{font-size:42px;}a{color:#0066CC}.logo{width:120px}.navbar{padding:5px;border-bottom:1px lightgrey solid;overflow:auto}.navbar-linksTEMP{display:inline-block; vertical-align:bottom; line-height:30px;margin-left:10px}.navbar-linkTEMP{margin:5px;padding:5px;color:black;background-color:whitesmoke}ul{list-style:none;margin:0}.wocum-field{background-color:whitesmoke;border:lightgrey;margin:2px; padding:2px;font-size:11px;color:grey}.thumbnail{float:left;height:80px; text-align: center;margin: 0 auto;  width: 80px;max-height: 80px;}.carousel-inner{ text-align: center;margin: 0 auto;  width: auto;  height: 400px;  max-height: 400px; }.carousel-inner>.item>img, .carousel-inner>.item>a>img {display: inline;line-height: 1;}</style><nav class="navbar navbar-default navbar-fixed-top" role="navigation">  <!-- Brand and toggle get grouped for better mobile display -->  <div class="navbar-header">    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">      <span class="sr-only">Toggle navigation</span>      <span class="icon-bar"></span>      <span class="icon-bar"></span>      <span class="icon-bar"></span>    </button><span class="logo"><img src="http://googledrive.com/host/0B0YWdwxH6K5XSWFQTENQTFRsTk0/logo.png" style="float:left"></span>  </div>  <!-- Collect the nav links, forms, and other content for toggling -->  <div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav"><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=what-is-wocum">what is wocum</a></li><li></li><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=demo">demo</a></li><li></li><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=advantages">advantages</a></li><li></li><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=uses">uses</a></li><li></li><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=website-creation">website creation</a></li><li></li><li class="navbar-link"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=guide">guide</a></li><li></li></ul>  </div><!-- /.navbar-collapse --></nav><div class="object-container" data-target="#navparent" data-spy="scroll">
+<div class="row"><div class="col-md-3"><div id="navparent">
+      <ul class="nav nav-list navex affix" data-spy="affix">
+        <li>
+          <a href="#description">
+            description
+          </a>
+        </li>
+        <li>
+          <a href="#relations">
+            relations
+          </a>
+        </li>
+&nbsp; &nbsp; &nbsp; 
+        <li class="active">
+          <a href="#fields">
+            fields
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
+<div class="col-md-9 col-md-offset-3">       
+<h1 id="description" data-offset-top="200">uses</h1>
+        <div id="media" style="display:none">
+                <div id="myCarousel" class="carousel slide">
+                        <div id="files-list" class="carousel-inner">
+                        </div>
+                        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+            ‹
+            </a>
+            <a class="carousel-control right" href="#myCarousel" data-slide="next">
+            ›
+            </a>
+        </div>
+        <div><p class="c2"><span><span class="wocum-embedded-field">type <span class="wocum-embedded-field-value"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=type">type</a><span></span> <span class="wocum-embedded-field">wocum-internal <span class="wocum-embedded-field-value">navbar</span></span></span></span></span></p>
+        </div>
+        </div>
+        <h3 id="relations" data-offset-top="200">relations</h3>
+        <div id="wocum-relations" class="wocum-div" style="display: inline;">
+                <form class="filterform" action="#">
+                        <input class="filterinput" type="text">
+            </form>
+                <ul class="list" id="relations-list"><li id="uses" class="type-wocum-card"><div><h4><img src="" alt="type image" style="height:16px;float:left;padding-right:5px"><strong><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=uses">uses</a></strong></h4></div><div style="overflow:auto"><p class="excerpt"></p><p class="fields"><span class="wocum-field"><span class="wocum-field-key">type</span> <span class="wocum-field-value"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=type">type</a><span></span>,<span class="wocum-field"><span class="wocum-field-key">wocum-internal</span> <span class="wocum-field-value">navbar</span></span></span></span></p></div></li><li id="website-creation" class="uses-wocum-card"><div><h4><img src="" alt="type image" style="height:16px;float:left;padding-right:5px"><strong><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=website-creation">website creation</a></strong></h4></div><div style="overflow:auto"><p class="excerpt">Create simple websites in minutes </p><p class="fields"><span class="wocum-field"><span class="wocum-field-key">type</span> <span class="wocum-field-value"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=uses">uses</a><span></span>,<span class="wocum-field"><span class="wocum-field-key">wocum-internal</span> <span class="wocum-field-value">navbar</span></span>,<span class="wocum-field"><span class="wocum-field-key">link</span> <span class="wocum-field-value"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=templates">templates</a><span></span></span></span></span></span></p></div></li><li id="knowledge-modeling" class="uses-wocum-card"><div><h4><img src="" alt="type image" style="height:16px;float:left;padding-right:5px"><strong><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=knowledge-modeling">knowledge modeling</a></strong></h4></div><div style="overflow:auto"><p class="excerpt"></p><p class="fields"><span class="wocum-field"><span class="wocum-field-key">type</span> <span class="wocum-field-value"><a href="?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=uses">uses</a><span></span></span></span></p></div></li></ul>
+        </div>
+      
+        <h3 id="fields" data-offset-top="200">fields</h3>
+     
+    <b>
+    id
+    </b>
+    = uses 
+    <br>
+     
+    <b>
+    name
+    </b>
+    = uses 
+    <br>
+     
+    <b>
+    description
+    </b>
+    = &lt;!DOCTYPE&gt;&lt;html&gt;&lt;p class='c2'&gt;&lt;span&gt;&lt;span class='wocum-embedded-field'&gt;type &lt;span class='wocum-embedded-field-value'&gt;&lt;a href='?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=type'&gt;type&lt;/a&gt;&lt;span&gt;&lt;/span&gt; &lt;span class='wocum-embedded-field'&gt;wocum-internal &lt;span class='wocum-embedded-field-value'&gt;navbar&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;/html&gt; 
+    <br>
+     
+    <b>
+    type
+    </b>
+    = type 
+    <br>
+     
+    <b>
+    wocum-internal
+    </b>
+    = navbar 
+    <br>
+     
+    <b>
+    excerpt
+    </b>
+    =  
+    <br>
+     
+    <b>
+    url
+    </b>
+    = ?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=uses 
+    <br>
+     
+    <b>
+    image
+    </b>
+    =  
+    <br>
+     
+    <b>
+    type_image
+    </b>
+    =  
+    <br>
+     
+    <b>
+    fields
+    </b>
+    = &lt;span class='wocum-field'&gt;&lt;span class='wocum-field-key'&gt;type&lt;/span&gt; &lt;span class='wocum-field-value'&gt;&lt;a href='?key=tTH-oWG4br8YeObqyMrAmuA&amp;id=type'&gt;type&lt;/a&gt;&lt;span&gt;&lt;/span&gt;,&lt;span class='wocum-field'&gt;&lt;span class='wocum-field-key'&gt;wocum-internal&lt;/span&gt; &lt;span class='wocum-field-value'&gt;navbar&lt;/span&gt;&lt;/span&gt; 
+    <br>
+    
+</div>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js">
+</script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js">
+</script>
+</div></div>
+
+
+<div class="navbar navbar-fixed-bottom" style="font-size:10px;text-align:right;background-color:white; filter:alpha(opacity=60); opacity:0.6">
+powered by 
+<a href="http://wocum.com">
+wocum
+</a>
+- docs turned websites | 
+<span>
+/admin
+</span>
+</div>
+<script>
+(function(i,s,o,g,r,a,m){
+i['GoogleAnalyticsObject']=r;
+i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();
+a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+a.async=1;
+a.src=g;
+m.parentNode.insertBefore(a,m)}
+)(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-41698353-1', 'wocum.com');ga('send', 'pageview');
+</script></div>
+  <script type="text/javascript">
+  function GetURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++)
+      {
+      var sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] == sParam)
+      {
+        return sParameterName[1];
+      }
+    }
+  }
+  var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdDBJS1dTTEtxemtyUUV6eldDY09wZkE';
+  var slug = GetURLParameter('id') || 'default'
+
+  function pageHandler (response) {
+    try 
+    {
+      wocumJSON = response.table.rows[0].c[0].v;
+      wocumTemplate = response.table.rows[0].c[1].v;
+      var template = Handlebars.compile(wocumTemplate);
+      var context = jQuery.parseJSON(wocumJSON);
+      var handlebarsHTML    = template(context);
+      document.getElementById("wocum").innerHTML = handlebarsHTML;
+    }
+    catch (err)
+    {
+      $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
+    }
+  }
+
+  function nonExistingPageHandler (response) {
+    try 
+    {
+      wocumJSON = '\{\"id\":\"'+slug+'\",\"name\":\"'+slug+'\"\}';
+      wocumTemplate = response.table.rows[0].c[1].v;
+      var template = Handlebars.compile(wocumTemplate);
+      var context = jQuery.parseJSON(wocumJSON);
+      var handlebarsHTML    = template(context);
+      document.getElementById("wocum").innerHTML = handlebarsHTML;
+    }
+    catch (err)
+    {
+       document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully you are not using this software to manage a nuclear reactor';
+    }
+  }
+    $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+    $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq=select+B+where+B+contains+\':\"'+slug+'\"\'&tqx=responseHandler:incomingRelationsHandler');
+  function filesHandler (response) {
+    var files = $.map(response.table.rows, function(item, index) {
+      return item.c[0].v;
+    });
+      if (typeof files !== 'undefined' && files.length > 0) {
+        files[0] = files[0].replace("item","active item");
+        document.getElementById("files-list").innerHTML= files.join('');
+        var showMedia = document.getElementById("media").style.display = 'inline';
+      }
+  }
+
+  function incomingRelationsHandler (response) {
+    var incomingRelations = $.map(response.table.rows, function(item, index) {
+      return item.c[0].v;
+    });
+    incomingRelations = '{"relations":['+incomingRelations+']}';  
+      if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
+        var template = Handlebars.compile("{{#each relations}}<li id='{{id}}' class='{{type}}-wocum-card'><div><h4><img src='{{type_image}}' alt='type image' style='height:16px;float:left;padding-right:5px'><strong><a href='{{url}}'>{{name}}</a></strong></h4></div><div style='overflow:auto'>{{#if image}}<img src='{{image}}' alt='image' class='thumbnail'>{{/if}}<p class='excerpt'>{{excerpt}}</p><p class='fields'>{{{fields}}}</p></div>{{/each}}");
+        var context = jQuery.parseJSON(incomingRelations);
+        var handlebarsHTML    = template(context);
+        document.getElementById("relations-list").innerHTML=handlebarsHTML;
+        var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
+        (function($) {
+        
+          $('.filterinput').keyup(function() {
+            var a = $(this).val();
+            if (a.length > 2) {
+              // this finds all links in the list that contain the input, and hide the ones not containing the input while showing the ones that do
+              var containing = $('#relations-list li').filter(function () {
+                var regex = new RegExp('\\b' + a, 'i');
+                return regex.test($('a', this).text());
+              }).slideDown();
+              $('#relations-list li').not(containing).slideUp();
+            } else {
+              $('#relations-list li').slideDown();
+            }
+          return false;
+        })
+      }(jQuery));
+    }
+  }
+  </script>
+  <script type="text/javascript">
+      (function () {
+        $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:C&tq=select%20B,C%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+      })()
+  </script>
+</div><!-- container -->
+
+</body></html>
