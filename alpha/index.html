@@ -57,6 +57,7 @@ var template = Handlebars.compile(wocumTemplate);
 var context = jQuery.parseJSON(wocumJSON);
 var handlebarsHTML    = template(context);
 document.getElementById("wocum").innerHTML = handlebarsHTML;
+getFilesAndRelations ();
 }
 catch (err)
 {
@@ -73,14 +74,19 @@ var template = Handlebars.compile(wocumTemplate);
 var context = jQuery.parseJSON(wocumJSON);
 var handlebarsHTML    = template(context);
 document.getElementById("wocum").innerHTML = handlebarsHTML;
+getFilesAndRelations ();
 }
 catch (err)
 {
 document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully you are not using this software to manage a nuclear reactor';
 }
 }
+
+function getFilesAndRelations () {
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq=select+B+where+B+contains+\':\"'+slug+'\"\'&tqx=responseHandler:incomingRelationsHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
+
+}
 
 function filesHandler (response) {
 var files = $.map(response.table.rows, function(item, index) {
