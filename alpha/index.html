@@ -83,9 +83,8 @@ document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully yo
 }
 
 function getFilesAndRelations () {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20A%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!A1:B&tq=select%20B%20where%20A%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
-
 }
 
 function filesHandler (response) {
