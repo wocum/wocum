@@ -88,8 +88,6 @@ $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:D&tq
 }
 
 function filesHandler (response) {
-try
-{
 var files = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
@@ -98,15 +96,9 @@ files[0] = files[0].replace("item","active item");
 document.getElementById("files-list").innerHTML= files.join('');
 var showMedia = document.getElementById("wocum-media").style.display = 'inline';
 }
-catch (err)
-{
-}
-}
 }
 
 function incomingRelationsHandler (response) {
-try
-{
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
@@ -134,10 +126,6 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
   return false;
 })
 }(jQuery));
-}
-catch (err)
-{
-}
 }
 }
 </script>
