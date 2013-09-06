@@ -63,7 +63,7 @@ getFilesAndRelations ();
 }
 catch (err)
 {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
 }
 }
 
@@ -85,8 +85,8 @@ document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully yo
 }
 
 function getFilesAndRelations () {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!C1:D&tq=select%20D%20where%20C%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!B1:B&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!C:D&tq=select%20D%20where%20C%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
 }
 
 function filesHandler (response) {
@@ -126,14 +126,14 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
       $('#relations-list li').slideDown();
     }
   return false;
-})
+}
 }(jQuery));
 }
 }
 </script>
 <script type="text/javascript">
 (function () {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A1:C&tq=select%20B,C%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
 })()
 </script>
 </body></html>
