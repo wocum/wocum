@@ -71,7 +71,7 @@ $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=
 function nonExistingPageHandler (response) {
 try 
 {
-wocumJSON = '\{\"id\":\"'+slug+'\",\"name\":\"\ '+slug+'\"\}';
+wocumJSON = '\{\"id\":\"'+slug+'\",\"name\":\" \'+slug+'\"\}';
 wocumTemplate = response.table.rows[0].c[1].v;
 var template = Handlebars.compile(wocumTemplate);
 var context = jQuery.parseJSON(wocumJSON);
