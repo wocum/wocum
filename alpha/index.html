@@ -123,4 +123,9 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
 })()
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#example').dataTable();
+} );
+</script>
 </body></html>
