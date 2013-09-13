@@ -101,7 +101,7 @@ var handlebarsRelationsHTML    = templateRelations(context);
 document.getElementById("relations-list").innerHTML=handlebarsRelationsHTML;
 var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
 
-var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'role'}}<div id='wocum-media' class='wocum-block' style='display:none'><img src='{{url}}'><div id='myCarousel' class='carousel slide'><div id='files-list' class='carousel-inner'></div><a class='carousel-control left' href= '#myCarousel'  data-slide='prev'>&lsaquo;</a><a class='carousel-control right' href= '#myCarousel'  data-slide='next'>&rsaquo;</a></div></div>{{/is}}{{/each}}");
+var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'file'}}<div id='wocum-media' class='wocum-block' style='display:none'><img src='{{url}}'><div id='myCarousel' class='carousel slide'><div id='files-list' class='carousel-inner'></div><a class='carousel-control left' href= '#myCarousel'  data-slide='prev'>&lsaquo;</a><a class='carousel-control right' href= '#myCarousel'  data-slide='next'>&rsaquo;</a></div></div>{{/is}}{{/each}}");
 var context = jQuery.parseJSON(incomingRelations);
 var handlebarsFilesHTML    = templateFiles(context);
 document.getElementById("files-list").innerHTML= handlebarsFilesHTML;
