@@ -89,6 +89,7 @@ var handlebarsRelationsHTML    = templateRelations(context);
 document.getElementById("relations-list").innerHTML=handlebarsRelationsHTML;
 var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
 
+var templateFiles = Handlebars.compile("{{#if imange}}<div class='active item carouselImg'><img src='{{image}}' class='carrousel-image' alt='image'></div>{{/if}}");
 var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'file'}}<div class='item carouselImg'><img src='{{image}}' class='carrousel-image' alt='image'></div>{{/is}}{{/each}}");
 var context = jQuery.parseJSON(incomingRelations);
 var handlebarsFilesHTML    = templateFiles(context);
