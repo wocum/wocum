@@ -83,13 +83,13 @@ return item.c[0].v;
 incomingRelations = '{"relations":['+incomingRelations+']}';  
 if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
 
-var templateRelations = Handlebars.compile("{{#each relations}}{{#is type 'role'}}funciona{{else}}tambien funciona{{/is}}<li id='{{id}}' class='wocum-card'><div><h4>{{#if type_image}}<img src='{{type_image}}' alt='type image' class='icon'>{{/if}}<strong>{{#if type}}{{type}}: {{/if}}<a href='{{url}}'>{{name}}</a></strong></h4>{{#if image}}<img src='{{image}}' alt='image' class='thumbnail'>{{/if}}<p class='excerpt'>{{excerpt}}</p><p class='fields'>{{{fields}}}</p></div>{{/each}}");
+var templateRelations = Handlebars.compile("{{#each relations}}{{#is type 'role'}}funciona{{else}}tambien funciona{{/is}}<li id='{{id}}' class='wocum-card'><div><h4>{{#if type_image}}<img src='{{type_image}}' alt='type image' class='icon'>{{/if}} <strong>{{#if type}}{{type}}: {{/if}}<a href='{{url}}'>{{name}}</a></strong></h4>{{#if image}}<img src='{{image}}' alt='image' class='thumbnail'>{{/if}}<p class='excerpt'>{{excerpt}}</p><p class='fields'>{{{fields}}}</p></div>{{/each}}");
 var context = jQuery.parseJSON(incomingRelations);
 var handlebarsRelationsHTML    = templateRelations(context);
 document.getElementById("relations-list").innerHTML=handlebarsRelationsHTML;
 var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
 
-var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'file'}}<div class='active item carouselImg' style='width:100%'><img src='{{image}}'></div>{{/is}}{{/each}}");
+var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'file'}}{{#withFirst collection}}<div class='active item carouselImg' style='width:100%'><img src='{{image}}'></div>{{/withFirst}}<div class='item carouselImg' style='width:100%'><img src='{{image}}'></div>{{/is}}{{/each}}");
 var context = jQuery.parseJSON(incomingRelations);
 var handlebarsFilesHTML    = templateFiles(context);
 document.getElementById("files-list").innerHTML= handlebarsFilesHTML;
