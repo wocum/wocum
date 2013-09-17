@@ -76,17 +76,6 @@ $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!C:D
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
 }
 
-function filesHandler (response) {
-var files = $.map(response.table.rows, function(item, index) {
-return item.c[0].v;
-});
-if (typeof files !== 'undefined' && files.length > 0) {
-files[0] = files[0].replace("item","active item");
-document.getElementById("files-list").innerHTML= files.join('');
-var showMedia = document.getElementById("wocum-media").style.display = 'inline';
-}
-}
-
 function incomingRelationsHandler (response) {
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
