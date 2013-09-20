@@ -40,7 +40,7 @@ document.title = "wocum - "+slug;
 function pageHandler (response) {
 try 
 {
-wocumJSON = response.table.rows[0].c[0].v;
+window.wocumJSON = response.table.rows[0].c[0].v;
 wocumTemplate = response.table.rows[0].c[1].v;
 var template = Handlebars.compile(wocumTemplate);
 var context = jQuery.parseJSON(wocumJSON);
@@ -88,6 +88,7 @@ var showMedia = document.getElementById("wocum-media").style.display = 'inline';
 }
 
 function incomingRelationsHandler (response) {
+	window.alert(window.wocumJSON);
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
