@@ -42,6 +42,7 @@ try
 {
 window.wocumJSON = response.table.rows[0].c[0].v;
 wocumTemplate = response.table.rows[0].c[1].v;
+window.wocumListTemplate = response.table.rows[0].c[2].v;
 var template = Handlebars.compile(wocumTemplate);
 var context = jQuery.parseJSON(wocumJSON);
 var handlebarsHTML    = template(context);
@@ -88,7 +89,7 @@ var showMedia = document.getElementById("wocum-media").style.display = 'inline';
 }
 
 function incomingRelationsHandler (response) {
-	window.alert(window.wocumJSON);
+	window.alert(window.wocumListTemplate)
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
@@ -121,7 +122,7 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
 </script>
 <script type="text/javascript">
 (function () {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C,D%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
 })()
 </script>
 <script type="text/javascript">
