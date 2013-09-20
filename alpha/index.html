@@ -90,7 +90,7 @@ var showMedia = document.getElementById("wocum-media").style.display = 'inline';
 }
 
 function incomingRelationsHandler (response) {
-	window.alert(window.wocumListTemplate)
+	window.alert(window.wocumJSON)
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
