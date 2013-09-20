@@ -204,6 +204,8 @@ var dataset = new recline.Model.Dataset({
   records: data
 });
 
+dataset.fetch();
+
 document.getElementById("wocum-recline-dataset-record-count").innerHTML = 'Total records found: ' + dataset.recordCount + '<br />';
 
 /*
