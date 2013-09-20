@@ -44,7 +44,6 @@ window.wocumJSON = response.table.rows[0].c[0].v;
 wocumTemplate = response.table.rows[0].c[1].v;
 var template = Handlebars.compile(wocumTemplate);
 window.wocumListTemplate = response.table.rows[0].c[2].v;
-window.wocumListTemplate = Handlebars.compile(wocumListTemplate);
 var context = jQuery.parseJSON(wocumJSON);
 var handlebarsHTML    = template(context);
 document.getElementById("wocum").innerHTML = handlebarsHTML;
@@ -90,7 +89,7 @@ var showMedia = document.getElementById("wocum-media").style.display = 'inline';
 }
 
 function incomingRelationsHandler (response) {
-	window.alert(window.wocumJSON)
+window.alert(window.wocumListTemplate)
 var incomingRelations = $.map(response.table.rows, function(item, index) {
 return item.c[0].v;
 });
