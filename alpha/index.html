@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,7 +15,7 @@
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
-	<script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XLWlNSDhockFwcVE/picnet.table.filter.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -115,6 +116,8 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
     }
   return false;
 })
+}(jQuery));
+}
 }
 </script>
 <script type="text/javascript">
@@ -124,7 +127,7 @@ $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:D&tq=
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#wocum-table').tableFilter();
-});
+    $('#example').dataTable();
+} );
 </script>
 </body></html>
