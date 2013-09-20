@@ -204,7 +204,14 @@ var dataset = new recline.Model.Dataset({
   records: data
 });
 
-dataset.fetch();
+var field = new Field({
+  // a unique identifer for this field- usually this should match the key in the records hash
+  id: 'location'
+
+  // (optional: defaults to string) the type of the data in this field.
+  // For list of type names see below
+  type: 'geo-point',
+});
 
 document.getElementById("wocum-recline-dataset-record-count").innerHTML = 'Total records found: ' + dataset.recordCount + '<br />';
 
