@@ -42,8 +42,9 @@ try
 {
 window.wocumJSON = response.table.rows[0].c[0].v;
 wocumTemplate = response.table.rows[0].c[1].v;
-window.wocumListTemplate = response.table.rows[0].c[2].v;
 var template = Handlebars.compile(wocumTemplate);
+window.wocumListTemplate = response.table.rows[0].c[2].v;
+window.wocumListTemplate = Handlebars.compile(wocumListTemplate);
 var context = jQuery.parseJSON(wocumJSON);
 var handlebarsHTML    = template(context);
 document.getElementById("wocum").innerHTML = handlebarsHTML;
