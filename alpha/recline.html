@@ -190,6 +190,7 @@ var showRelations = document.getElementById("wocum-relations").style.display = '
 var data = jQuery.parseJSON($(document).data('wocum.reclineData'));
 console.log(data);
 	console.log('aqui');
+jQuery(function($) {
   window.dataExplorer = null;
   window.explorerDiv = $('.data-explorer-here');
 
@@ -242,6 +243,8 @@ console.log(data);
       ]
     });
   }
+  createExplorer(dataset, state);
+});
 console.log(dataset);
 console.log(state);
 
