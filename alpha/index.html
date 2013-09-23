@@ -1,133 +1,308 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-  	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+  	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+  	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<meta charset="utf-8">
 	<meta name="description" content="google drive powered CMS">
 	<meta name="author" content="wocum.com">
 	<title>wocum - google drive powered CMS</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
 	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/bootstrap/2.0.2/css/bootstrap.css">
+
+  
+      <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet/0.4.4/leaflet.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../vendor/leaflet/0.4.4/leaflet.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet.markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet.markercluster/MarkerCluster.Default.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../vendor/leaflet.markercluster/MarkerCluster.Default.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/slickgrid/2.0.1/slick.grid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/timeline/20120520/css/timeline.css">
+
+  <!-- Recline CSS components -->
+  <link rel="stylesheet" href="http://reclinejs.com/css/grid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/slickgrid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/flot.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/map.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/multiview.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/timeline.css">
+  <!-- /Recline CSS components -->
+
+  <!-- 3rd party JS libraries -->
+  <script type="text/javascript" async="" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/ga.js"></script><script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/underscore.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backbone.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/mustache.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/bootstrap.js"></script>
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" src="../../vendor/flot/excanvas.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.flot.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/leaflet.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/leaflet.markercluster.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.event.drag-2.0.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/slick.grid.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/moment.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/timeline.js"></script>
+  <!--[if lte IE 7]>
+  <script language="javascript" type="text/javascript" src="../../vendor/json/json2.js"></script>
+  <![endif]-->
+
+  <!--
+    ## Just use the all in one library version rather than individual files
+
+  <script type="text/javascript" src="../../dist/recline.js"></script>
+
+  -->
+
+  <!-- model and backends -->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/ecma-fixes.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/model.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.memory.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.dataproxy.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.gdocs.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.elasticsearch.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.csv.js"></script>
+
+  <!-- views -->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.grid.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.slickgrid.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.flot.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.graph.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.map.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.timeline.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.pager.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.queryeditor.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.filtereditor.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.valuefilter.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.facetviewer.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.fields.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.multiview.js"></script>
+
+
+  
+
+  <!-- link rel="stylesheet" href="vendor/bootstrap/2.0.2/css/bootstrap-responsive.css" -->
+
+  <link href="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/pygments.css" rel="stylesheet" type="text/css">
+  <link href="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/style.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+.recline-slickgrid {
+  height: 550px;
+}
+
+.recline-timeline .vmm-timeline {
+  height: 550px;
+}
+</style>
+
 </head>
 <body>
 <div class="container">
-  <div id="wocum"></div>
+<div id="wocum"></div>
+inicio<div class="data-explorer-here"></div>fin
+<div style="clear: both;"></div>
+
 </div>
+
 <script type="text/javascript">
 function GetURLParameter(sParam) {
-var sPageURL = window.location.search.substring(1);
-var sURLVariables = sPageURL.split('&');
-for (var i = 0; i < sURLVariables.length; i++)
-{
-var sParameterName = sURLVariables[i].split('=');
-if (sParameterName[0] == sParam)
-{
-return sParameterName[1];
-}
-}
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
 }
 var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdFRILW9XRzRicjhZZU9icXlNckFtdUE';
 var slug = GetURLParameter('id') || 'home';
-document.title = "wocum - "+slug;
+document.title = "wocum - " + slug;
 
-function pageHandler (response) {
-try 
-{
-window.wocumJSON = response.table.rows[0].c[0].v;
-wocumTemplate = response.table.rows[0].c[1].v;
-var template = Handlebars.compile(wocumTemplate);
-window.wocumListTemplate = response.table.rows[0].c[2].v;
-var context = jQuery.parseJSON(wocumJSON);
-var handlebarsHTML    = template(context);
-document.getElementById("wocum").innerHTML = handlebarsHTML;
-getFilesAndRelations ();
-}
-catch (err)
-{
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
-}
-}
-
-function nonExistingPageHandler (response) {
-try 
-{
-wocumJSON = '\{\"id\":\"'+slug+'\",\"name\":\"'+slug+'\"\}';
-wocumTemplate = response.table.rows[0].c[1].v;
-var template = Handlebars.compile(wocumTemplate);
-var context = jQuery.parseJSON(wocumJSON);
-var handlebarsHTML    = template(context);
-document.getElementById("wocum").innerHTML = handlebarsHTML;
-getFilesAndRelations ();
-}
-catch (err)
-{
-document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully you are not using this software to manage a nuclear reactor';
-}
-}
-
-function getFilesAndRelations () {
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=src_files!C:D&tq=select%20D%20where%20C%20contains%20%22'+slug+'%22&tqx=responseHandler:filesHandler');
-$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22'+slug+'%22&tqx=responseHandler:incomingRelationsHandler');
-}
-
-function filesHandler (response) {
-var files = $.map(response.table.rows, function(item, index) {
-return item.c[0].v;
-});
-if (typeof files !== 'undefined' && files.length > 0) {
-files[0] = files[0].replace("item","active item");
-document.getElementById("files-list").innerHTML= files.join('');
-var showMedia = document.getElementById("wocum-media").style.display = 'inline';
-}
-}
-
-function incomingRelationsHandler (response) {
-var incomingRelations = $.map(response.table.rows, function(item, index) {
-return item.c[0].v;
-});
-incomingRelations = '{"relations":['+incomingRelations+']}';  
-if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
-var templateRelations = Handlebars.compile(window.wocumListTemplate);
-var context = jQuery.parseJSON(incomingRelations);
-var handlebarsHTML    = templateRelations(context);
-document.getElementById("relations-list").innerHTML=handlebarsHTML;
-var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
-(function($) {
-
-  $('.filterinput').keyup(function() {
-    var a = $(this).val();
-    if (a.length > 2) {
-      // this finds all links in the list that contain the input, and hide the ones not containing the input while showing the ones that do
-      var containing = $('#relations-list li').filter(function () {
-        var regex = new RegExp('\\b' + a, 'i');
-        return regex.test($('a', this).text());
-      }).slideDown();
-      $('#relations-list li').not(containing).slideUp();
-    } else {
-      $('#relations-list li').slideDown();
+function pageHandler(response) {
+    try {
+        window.wocumJSON = response.table.rows[0].c[0].v;
+        wocumTemplate = response.table.rows[0].c[1].v;
+        var template = Handlebars.compile(wocumTemplate);
+        window.wocumListTemplate = response.table.rows[0].c[2].v;
+        var context = jQuery.parseJSON(wocumJSON);
+        var handlebarsHTML = template(context);
+        document.getElementById("wocum").innerHTML = handlebarsHTML;
+        getFilesAndRelations();
+    } catch (err) {
+        $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
     }
-  return false;
+}
+
+function nonExistingPageHandler(response) {
+    try {
+        wocumJSON = '\{\"id\":\"' + slug + '\",\"name\":\"' + slug + '\"\}';
+        wocumTemplate = response.table.rows[0].c[1].v;
+        var template = Handlebars.compile(wocumTemplate);
+        var context = jQuery.parseJSON(wocumJSON);
+        var handlebarsHTML = template(context);
+        document.getElementById("wocum").innerHTML = handlebarsHTML;
+        getFilesAndRelations();
+    } catch (err) {
+        document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully you are not using this software to manage a nuclear reactor';
+    }
+}
+
+function getFilesAndRelations() {
+    $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=src_files!C:D&tq=select%20D%20where%20C%20contains%20%22' + slug + '%22&tqx=responseHandler:filesHandler');
+    $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22' + slug + '%22&tqx=responseHandler:incomingRelationsHandler');
+}
+
+function filesHandler(response) {
+    var files = $.map(response.table.rows, function (item, index) {
+        return item.c[0].v;
+    });
+    if (typeof files !== 'undefined' && files.length > 0) {
+        files[0] = files[0].replace("item", "active item");
+        document.getElementById("files-list").innerHTML = files.join('');
+        var showMedia = document.getElementById("wocum-media").style.display = 'inline';
+    }
+}
+
+function incomingRelationsHandler(response) {
+    incomingRelationsRaw = $.map(response.table.rows, function (item, index) {
+        return item.c[0].v;
+    });
+    incomingRelations = '{"relations":[' + incomingRelationsRaw + ']}';
+    if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
+        var templateRelations = Handlebars.compile(window.wocumListTemplate);
+        var context = jQuery.parseJSON(incomingRelations);
+        var handlebarsHTML = templateRelations(context);
+        document.getElementById("relations-list").innerHTML = handlebarsHTML;
+        var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
+        window.wocumRelationsDatasetString = "{\"records\":[" + incomingRelationsRaw + "],\"fields\":[{\"id\": \"id\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}";
+//        window.wocumRelationsDatasetData = jQuery.parseJSON("{\"records\":[{\"id\":\"HOAL\"}],\"fields\": [{\"id\": \"id\"}]}");
+//        window.wocumRelationsDatasetData = jQuery.parseJSON("{\"records\":[{\"id\":\"Caitlin-Upton-conference-room\",\"name\":\"Caitlin Upton conference room\",\"type\":\"venue\",\"excerpt\":\"We personally believe that great speakers deserve great venues. The conference room is the one we reserve for the talks, round tables, etc… \",\"url\":\"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Caitlin-Upton-conference-room\",\"image\":\"\",\"type_image\":\"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/venue.svg\"}],fields: [{\"id": \"id\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}");
+        window.wocumRelationsDatasetJSON = jQuery.parseJSON(window.wocumRelationsDatasetString.replace('"','\"'));
+        console.log('AFTER FUNCTION'+window.wocumRelationsDataset);
+        (function ($) {
+
+            $('.filterinput').keyup(function () {
+                var a = $(this).val();
+                if (a.length > 2) {
+                    // this finds all links in the list that contain the input, and hide the ones not containing the input while showing the ones that do
+                    var containing = $('#relations-list li').filter(function () {
+                        var regex = new RegExp('\\b' + a, 'i');
+                        return regex.test($('a', this).text());
+                    }).slideDown();
+                    $('#relations-list li').not(containing).slideUp();
+                } else {  
+                    $('#relations-list li').slideDown();
+                }
+                return false;
+            })
+
+        }(jQuery));
+    }
+
+//recline app
+jQuery(function($) {
+  window.dataExplorer = null;
+  window.explorerDiv = $('.data-explorer-here');
+// This is some fancy stuff to allow configuring the multiview from parameters in the query string
+  var state = recline.View.parseQueryString(decodeURIComponent(window.location.search));
+  if (state) {
+    _.each(state, function(value, key) {
+      try {
+        value = JSON.parse(value);
+      } catch(e) {}
+      state[key] = value;
+    });
+  } else {
+    state.url = 'demo';
+  }
+  var dataset = null;
+  if (state.dataset || state.url) {
+    var datasetInfo = _.extend({
+        url: state.url,
+        backend: state.backend
+      },
+      state.dataset
+    );
+    dataset = new recline.Model.Dataset(datasetInfo);
+  } else {
+console.log('before dataset'+window.wocumRelationsDataset);
+dataset = new recline.Model.Dataset(window.wocumRelationsDatasetJSON);
+//dataset = new recline.Model.Dataset({records:[{"id":"Caitlin-Upton-conference-room","name":"Caitlin Upton conference room","description":"<!DOCTYPE><html><p class='c0'><span><span class='wocum-inline-field'><span class='wocum-embedded-field-value' title='type '>/venue</span></span></span></p><p class='c0'><span>We personally believe that great speakers deserve great venues. The conference room is the one we reserve for the talks, round tables, etc…  that are not worth a shit. These include the typical annoying friends that insist you let them give a talk about the latest cutting-edge fucking trend, an ukrainian teenager that hacked your computer and stole some private photos you don’t want to see published in Internet or sponsors that want to give a brief (50 minutes... brief?) introduction to their new product line…</span></p></html>","type":"venue","excerpt":"We personally believe that great speakers deserve great venues. The conference room is the one we reserve for the talks, round tables, etc… ","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Caitlin-Upton-conference-room","image":"","type_image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/venue.svg","fields":"<span class='wocum-field'><span class='wocum-field-key'>type</span>: <span class='wocum-field-value'>/venue</span></span>"},{"id":"speakers","name":"speakers","description":"<!DOCTYPE><html><p class='c0'><span> </span></p><p class='c0'><span>We are proud to work </span></p></html>","type":"type","wocum-internal":"navbar","excerpt":"We are proud to work ","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=speakers","image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/speakers.svg","type_image":"","fields":"<span class='wocum-field'><span class='wocum-field-key'>type</span>: <span class='wocum-field-value'>/type</span></span> <span class='wocum-field'><span class='wocum-field-key'>wocum-internal</span>: <span class='wocum-field-value'>navbar</span></span>"},{"id":"speakers","name":"speakers","description":"","type":"file","excerpt":"","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=speakers","image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/speakers.svg","type_image":"","fields":"<span class='wocum-field'><span class='wocum-field-key'>type</span>: <span class='wocum-field-value'>file</span></span>"},{"id":"Management-principles-learnt-from-repairing-my-neighbours-washmachine","name":"Management principles learnt from repairing my neighbours washmachine","description":"The author of 'What do businesses and ornitology have in common?' and 'Dance the Macarena to build winning teams', we will hear an inspiring talk about the exiting experience of Walter Gramm when he had to repair a washmachine that had had a shock obstruyendo something in the tube where the water is supposed to go out.","type":"activities","speakers":"Judy Maxwell","venue":"","start":"1/1/2000","end":"","track":"","rating":"22","location":"51.58,0","excerpt":"","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Management-principles-learnt-from-repairing-my-neighbours-washmachine","image":"","type_image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/activities.svg","fields":" <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=type'>type</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=activities'>activities</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=speakers'>speakers</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Judy-Maxwell'>Judy Maxwell</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=venue'>venue</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id='></a></span></span> <span class='wocum-field'><span class='wocum-field-key'>start</span>: <span class='wocum-field-value'>1/1/2000</span></span> <span class='wocum-field'><span class='wocum-field-key'>end</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>track</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>rating</span>: <span class='wocum-field-value'>22</span></span> <span class='wocum-field'><span class='wocum-field-key'>location</span>: <span class='wocum-field-value'>51.58 0</span></span>"},{"id":"Writing-your-own-text-documents-for-cheerleaders","name":"Writing your own text documents for cheerleaders","description":"Have you ever thought about writing your own text to tell the world about something you think or whatever? In this crashcourse you will learn:</br>- write Britney Spears lyrics using real words, spaces and even line-breaks!</br>- save your work by pushing the button right at the top-left corner that looks like a door with some kind of mini-door for cats or little dogs</br>- open your document and show it to your friends or, even better, open it in front of someone you want to impress, like that cute guy in the literature class that looks like Justin Biever.","type":"activities","speakers":"Howard Bannister + jj","venue":"","start":"1/25/2000","end":"","track":"","rating":"43","location":"51.04,7.9","excerpt":"- write Britney Spears lyrics using real words, spaces and even line-breaks!","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Writing-your-own-text-documents-for-cheerleaders","image":"","type_image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/activities.svg","fields":" <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=type'>type</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=activities'>activities</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=speakers'>speakers</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Howard-Bannister'>Howard Bannister</a> <a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=jj'>jj</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=venue'>venue</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id='></a></span></span> <span class='wocum-field'><span class='wocum-field-key'>start</span>: <span class='wocum-field-value'>1/25/2000</span></span> <span class='wocum-field'><span class='wocum-field-key'>end</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>track</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>rating</span>: <span class='wocum-field-value'>43</span></span> <span class='wocum-field'><span class='wocum-field-key'>location</span>: <span class='wocum-field-value'>51.04 7.9</span></span>"},{"id":"Boost-your-business-with-a-viral-video","name":"Boost your business with a viral video","description":"<span class='wocum-inline-field'><span class='wocum-embedded-field-value' title='speaker '>Goth Perdin</span></span></br>Want to get noticed? Would you like your brand to be recognized by millions of people? It's easy: create a viral video and make sure your website is ready to receive millions of visits. Goth will explain how they have applied these principles to </br></br>","type":"activities","speakers":"Goth Sedin","venue":"","start":"2/18/2000","end":"","track":"","rating":"56","location":"","speaker":"Goth Perdin","excerpt":"Want to get noticed? Would you like your brand to be recognized by millions of people? It's easy: create a viral video and make sure your we","url":"?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Boost-your-business-with-a-viral-video","image":"","type_image":"http://googledrive.com/host/0B1bPF4T7NQvfMS02NGE1YzcxZi04ZjFhLTQxYzMtYTQwNS0xZDMxMzQ5OGZlNTE/activities.svg","fields":" <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=type'>type</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=activities'>activities</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=speakers'>speakers</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=Goth-Sedin'>Goth Sedin</a></span></span>  <span class='wocum-field'><span class='wocum-field-key'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id=venue'>venue</a></span>: <span class='wocum-field-value'><a href='?key=t9G4ndLpB5QRNlaCgcOdu1g&id='></a></span></span> <span class='wocum-field'><span class='wocum-field-key'>start</span>: <span class='wocum-field-value'>2/18/2000</span></span> <span class='wocum-field'><span class='wocum-field-key'>end</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>track</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>rating</span>: <span class='wocum-field-value'>56</span></span> <span class='wocum-field'><span class='wocum-field-key'>location</span>: <span class='wocum-field-value'></span></span> <span class='wocum-field'><span class='wocum-field-key'>speaker</span>: <span class='wocum-field-value'>Goth Perdin</span></span>"}],fields: [{id: 'id'},{id: 'location', type: 'geo_point'}]});
+}
+//control
+var $el = $('.data-explorer here');
+$el.append('Total found: ' + dataset.recordCount + '<br />');
+console.log('after dataset'+dataset);
+//control
+createExplorer(dataset, state);
 })
-}(jQuery));
 }
+
+// make Explorer creation / initialization in a function so we can call it
+// again and again
+var createExplorer = function(dataset, state) {
+  // remove existing data explorer view
+  var reload = false;
+  if (window.dataExplorer) {
+    window.dataExplorer.remove();
+    reload = true;
+  }
+  window.dataExplorer = null;
+  var $el = $('<div />');
+  $el.appendTo(window.explorerDiv);
+
+  var views = [
+    {
+      id: 'grid',
+      label: 'Grid',
+      view: new recline.View.SlickGrid({
+        model: dataset
+      })
+    },
+    {
+      id: 'graph',
+      label: 'Graph',
+      view: new recline.View.Graph({
+        model: dataset
+      })
+    },
+    {
+      id: 'map',
+      label: 'Map',
+      view: new recline.View.Map({
+        model: dataset
+      })
+    }
+  ];
+
+console.log(dataset);
+  window.dataExplorer = new recline.View.MultiView({
+    model: dataset,
+    el: $el,
+    state: state,
+    views: views
+  });
 }
+
 </script>
+
+</div>
+
+
 <script type="text/javascript">
 (function () {
 $.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:D&tq=select%20B,C,D%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
 })()
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#example').dataTable();
-} );
 </script>
 </body></html>
