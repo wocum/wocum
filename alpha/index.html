@@ -134,8 +134,6 @@ function pageHandler(response) {
         wocumJSONString = response.table.rows[0].c[0].v;
         window.wocumJSON = jQuery.parseJSON(wocumJSONString);
     	window.wocumObjectName = window.wocumJSON.name;
-console.log(window.wocumJSON);
-console.log(window.wocumObjectName);
         wocumTemplate = response.table.rows[0].c[1].v;
         var template = Handlebars.compile(wocumTemplate);
         window.wocumListTemplate = response.table.rows[0].c[2].v;
@@ -171,7 +169,8 @@ try {
         var templateRelations = Handlebars.compile(window.wocumListTemplate);
         var context = jQuery.parseJSON(incomingRelations);
         var handlebarsHTML = templateRelations(context);
-        document.getElementById("wocum-relations").innerHTML = handlebarsHTML;
+//        document.getElementById("wocum-relations").innerHTML = handlebarsHTML;
+        document.getElementById("wocum-relations").append(handlebarsHTML);
         var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
         window.wocumRelationsDatasetString = "{\"records\":[" + incomingRelationsRaw + "],\"fields\":[{\"id\": \"link\"},{\"id\": \"date\", \"type\": \"date\"},{\"id\": \"start\", \"type\": \"date\"},{\"id\": \"end\", \"type\": \"date\"},{\"id\": \"rating\", \"type\": \"number\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}";
         window.wocumRelationsDatasetJSON = jQuery.parseJSON(window.wocumRelationsDatasetString.replace('"','\"'));
