@@ -133,7 +133,7 @@ document.title = "wocum - " + slug;
 function pageHandler(response) {
     try {
         window.wocumJSON = response.table.rows[0].c[0].v;
-    	window.wocumObjectName = wocumJSON[0].name;
+    	window.wocumObjectName = wocumJSON.name;
 alert(window.wocumObjectName);
         wocumTemplate = response.table.rows[0].c[1].v;
         var template = Handlebars.compile(wocumTemplate);
