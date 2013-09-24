@@ -139,7 +139,7 @@ function pageHandler(response) {
         var context = jQuery.parseJSON(wocumJSON);
         var handlebarsHTML = template(context);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
-	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+slug+'%3C%2Fwocum-link%3%22&tqx=responseHandler:incomingRelationsHandler');
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+slug+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
         $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
     }
