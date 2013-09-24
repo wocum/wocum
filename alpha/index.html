@@ -140,7 +140,7 @@ console.log(window.wocumObjectName);
         wocumTemplate = response.table.rows[0].c[1].v;
         var template = Handlebars.compile(wocumTemplate);
         window.wocumListTemplate = response.table.rows[0].c[2].v;
-        var handlebarsHTML = template(context);
+        var handlebarsHTML = template(window.wocumJSON);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
 	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+slug+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
