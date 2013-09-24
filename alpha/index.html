@@ -158,7 +158,7 @@ function nonExistingPageHandler(response) {
         document.getElementById("wocum").innerHTML = handlebarsHTML;
 	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22' + slug + '%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
-        document.getElementById("wocum").innerHTML = '<div class="alert alert-danger">Woooops!!! Wocum is probably calculating something. Please press F5 to refresh the page. Hopefully you are not using this software to manage a nuclear reactor.</div>';
+        document.getElementById("wocum").innerHTML = '<div class="alert alert-danger">Woooops!!! our flux capacitor has ran out of plutonium. Please press F5 to generate 1,21 gigowatts.</div>';
     }
 }
 
