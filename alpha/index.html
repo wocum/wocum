@@ -163,6 +163,7 @@ function nonExistingPageHandler(response) {
 }
 
 function incomingRelationsHandler(response) {
+try {
     incomingRelationsRaw = $.map(response.table.rows, function (item, index) {
         return item.c[0].v;
     });
@@ -304,6 +305,9 @@ var map = new recline.View.Map({
 $el.append(map.el);
 map.render();
 
+} catch (err) {
+console.log(err);
+}
 }
 
 </script>
