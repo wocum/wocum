@@ -133,7 +133,7 @@ document.title = "wocum - " + slug;
 function pageHandler(response) {
     try {
         window.wocumJSON = response.table.rows[0].c[0].v;
-    	window.wocumObjectName = window.wocumJSON.name;
+    	window.wocumObjectName = jQuery.parseJSON(window.wocumJSON).name;
 console.log(window.wocumJSON);
 console.log(window.wocumObjectName);
         wocumTemplate = response.table.rows[0].c[1].v;
