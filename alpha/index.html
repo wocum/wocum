@@ -237,6 +237,9 @@ var $el = $('#wocum-data-explorer');
 $el.append('Total found: ' + dataset.recordCount + '<br />');
 createExplorer(dataset, state);
 })
+} catch (err) {
+console.log(err);
+}
 }
 
 // make Explorer creation / initialization in a function so we can call it
@@ -304,10 +307,6 @@ var map = new recline.View.Map({
 });
 $el.append(map.el);
 map.render();
-
-} catch (err) {
-console.log(err);
-}
 }
 
 </script>
