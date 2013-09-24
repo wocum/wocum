@@ -139,7 +139,7 @@ function pageHandler(response) {
         var context = jQuery.parseJSON(wocumJSON);
         var handlebarsHTML = template(context);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
-        getFilesAndRelations();
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%2B%20' + slug + '%20%2B%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
         $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
     }
@@ -153,14 +153,10 @@ function nonExistingPageHandler(response) {
         var context = jQuery.parseJSON(wocumJSON);
         var handlebarsHTML = template(context);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
-        getFilesAndRelations();
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22' + slug + '%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
-        document.getElementById("wocum").innerHTML = 'Something went wrong. Hopefully you are not using this software to manage a nuclear reactor';
+        document.getElementById("wocum").innerHTML = '<div class="alert alert-danger">Woooops!!! Wocum is probably calculating something. Please press F5 to refresh the page. Hopefully you are not using this software to manage a nuclear reactor.</div>';
     }
-}
-
-function getFilesAndRelations() {
-    $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22' + slug + '%22&tqx=responseHandler:incomingRelationsHandler');
 }
 
 function incomingRelationsHandler(response) {
