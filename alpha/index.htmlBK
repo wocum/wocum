@@ -1,0 +1,321 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+  	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="description" content="google drive powered CMS">
+	<meta name="author" content="wocum.com">
+	<title>wocum - google drive powered CMS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js"></script>
+ 	<script src="https://googledrive.com/host/0B0YWdwxH6K5XMUJrQ1ozUzVjR28/lib/swag.js"></script>
+	<script>Swag.registerHelpers(Handlebars);</script>
+
+  
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet/0.4.4/leaflet.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../vendor/leaflet/0.4.4/leaflet.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet.markercluster/MarkerCluster.css">
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/leaflet.markercluster/MarkerCluster.Default.css">
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" href="../../vendor/leaflet.markercluster/MarkerCluster.Default.ie.css" />
+  <![endif]-->
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/slickgrid/2.0.1/slick.grid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/vendor/timeline/20120520/css/timeline.css">
+
+  <!-- Recline CSS components -->
+  <link rel="stylesheet" href="http://reclinejs.com/css/grid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/slickgrid.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/flot.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/map.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/multiview.css">
+  <link rel="stylesheet" href="http://reclinejs.com/css/timeline.css">
+  <!-- /Recline CSS components -->
+
+  <!-- 3rd party JS libraries -->
+  <script type="text/javascript" async="" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/ga.js"></script><script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/underscore.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backbone.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/mustache.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/bootstrap.js"></script>
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" src="../../vendor/flot/excanvas.min.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.flot.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/leaflet.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/leaflet.markercluster.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/jquery.event.drag-2.0.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/slick.grid.min.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/moment.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/timeline.js"></script>
+  <!--[if lte IE 7]>
+  <script language="javascript" type="text/javascript" src="../../vendor/json/json2.js"></script>
+  <![endif]-->
+
+  <!--
+    ## Just use the all in one library version rather than individual files
+
+  <script type="text/javascript" src="../../dist/recline.js"></script>
+
+  -->
+
+  <!-- model and backends -->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/ecma-fixes.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/model.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.memory.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.dataproxy.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.gdocs.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.elasticsearch.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/backend.csv.js"></script>
+
+  <!-- views -->
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.grid.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.slickgrid.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.flot.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.graph.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.map.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.timeline.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.pager.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.queryeditor.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.filtereditor.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.valuefilter.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.facetviewer.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/widget.fields.js"></script>
+  <script type="text/javascript" src="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/view.multiview.js"></script>
+
+
+  
+
+  <!-- link rel="stylesheet" href="vendor/bootstrap/2.0.2/css/bootstrap-responsive.css" -->
+
+  <link href="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/pygments.css" rel="stylesheet" type="text/css">
+  <link href="http://googledrive.com/host/0B0YWdwxH6K5XMldaZHRfSEx1cEk/style.css" rel="stylesheet" type="text/css">
+<!--  <style type="text/css">
+.recline-slickgrid {
+  height: 550px;
+}
+
+.recline-timeline .vmm-timeline {
+  height: 550px;
+}
+</style> -->
+
+</head><body>
+<div class="container">
+<div id="wocum"></div>
+<div style="clear: both;"></div>
+
+</div>
+
+<script type="text/javascript">
+function GetURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}
+var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdFRILW9XRzRicjhZZU9icXlNckFtdUE';
+var slug = GetURLParameter('id') || 'home';
+document.title = "wocum - " + slug;
+
+function pageHandler(response) {
+    try {
+        wocumJSONString = response.table.rows[0].c[0].v;
+        window.wocumJSON = jQuery.parseJSON(wocumJSONString);
+    	window.wocumObjectName = window.wocumJSON.name;
+        wocumTemplate = response.table.rows[0].c[1].v;
+        var template = Handlebars.compile(wocumTemplate);
+        window.wocumListTemplate = response.table.rows[0].c[2].v;
+        var handlebarsHTML = template(window.wocumJSON);
+        document.getElementById("wocum").innerHTML = handlebarsHTML;
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+window.wocumObjectName+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
+    } catch (err) {
+        $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
+    }
+}
+
+function nonExistingPageHandler(response) {
+    try {
+        wocumJSON = '\{\"id\":\"' + slug + '\",\"name\":\"' + slug + '\"\}';
+        wocumTemplate = response.table.rows[0].c[1].v;
+        var template = Handlebars.compile(wocumTemplate);
+        var context = jQuery.parseJSON(wocumJSON);
+        var handlebarsHTML = template(context);
+        document.getElementById("wocum").innerHTML = handlebarsHTML;
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:B&tq=select%20B%20where%20B%20contains%20%22' + slug + '%22&tqx=responseHandler:incomingRelationsHandler');
+    } catch (err) {
+        document.getElementById("wocum").innerHTML = '<div class="alert alert-danger">Woooops!!! our flux capacitor has ran out of plutonium. Please press F5 to generate 1,21 gigowatts.</div>';
+    }
+}
+
+function incomingRelationsHandler(response) {
+try {
+    incomingRelationsRaw = $.map(response.table.rows, function (item, index) {
+        return item.c[0].v;
+    });
+    incomingRelations = '{"relations":[' + incomingRelationsRaw + ']}';
+    if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
+        var templateRelations = Handlebars.compile(window.wocumListTemplate);
+        var context = jQuery.parseJSON(incomingRelations);
+        var handlebarsHTML = templateRelations(context);
+	try {
+		document.getElementById("wocum-relations-list").innerHTML=handlebarsHTML;
+	        var showRelations = document.getElementById("wocum-relations-list").style.display = 'inline';
+	} catch (err) {
+	}
+        window.wocumRelationsDatasetString = "{\"records\":[" + incomingRelationsRaw + "],\"fields\":[{\"id\": \"link\"},{\"id\": \"date\", \"type\": \"date\"},{\"id\": \"start\", \"type\": \"date\"},{\"id\": \"end\", \"type\": \"date\"},{\"id\": \"rating\", \"type\": \"number\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}";
+        window.wocumRelationsDatasetJSON = jQuery.parseJSON(window.wocumRelationsDatasetString.replace('"','\"'));
+        try {
+        var contextFiles = jQuery.parseJSON(incomingRelations);
+        var templateFiles = Handlebars.compile("{{#each relations}}{{#is type 'file'}}<div class='item carouselImg' style='width:100%'>{{{html}}}</div>{{/is}}{{/each}}");
+        var handlebarsFilesHTML    = templateFiles(contextFiles);
+        document.getElementById("files-list").innerHTML= handlebarsFilesHTML;
+        $("#files-list div:nth-child(1)").addClass('active');
+        var showMedia = document.getElementById("wocum-media").style.display = 'inline';
+        } catch (err) {
+        }
+         (function ($) {
+
+            $('.filterinput').keyup(function () {
+                var a = $(this).val();
+                if (a.length > 2) {
+                    // this finds all links in the list that contain the input, and hide the ones not containing the input while showing the ones that do
+                    var containing = $('#relations-list li').filter(function () {
+                        var regex = new RegExp('\\b' + a, 'i');
+                        return regex.test($('a', this).text());
+                    }).slideDown();
+                    $('#relations-list li').not(containing).slideUp();
+                } else {  
+                    $('#relations-list li').slideDown();
+                }
+                return false;
+            })
+
+        }(jQuery));
+    }
+
+//recline app
+jQuery(function($) {
+  window.dataExplorer = null;
+  window.explorerDiv = $('#wocum-data-explorer');
+// This is some fancy stuff to allow configuring the multiview from parameters in the query string
+  var state = recline.View.parseQueryString(decodeURIComponent(window.location.search));
+  if (state) {
+    _.each(state, function(value, key) {
+      try {
+        value = JSON.parse(value);
+      } catch(e) {}
+      state[key] = value;
+    });
+  } else {
+    state.url = 'demo';
+  }
+  var dataset = null;
+  if (state.dataset || state.url) {
+    var datasetInfo = _.extend({
+        url: state.url,
+        backend: state.backend
+      },
+      state.dataset
+    );
+    dataset = new recline.Model.Dataset(datasetInfo);
+  } else {
+dataset = new recline.Model.Dataset(window.wocumRelationsDatasetJSON);
+}
+var $el = $('#wocum-data-explorer');
+$el.append('Total found: ' + dataset.recordCount + '<br />');
+createExplorer(dataset, state);
+})
+} catch (err) {
+console.log(err);
+}
+}
+
+// make Explorer creation / initialization in a function so we can call it
+// again and again
+var createExplorer = function(dataset, state) {
+  // remove existing data explorer view
+  var reload = false;
+  if (window.dataExplorer) {
+    window.dataExplorer.remove();
+    reload = true;
+  }
+  window.dataExplorer = null;
+  var $el = $('<div />');
+  $el.appendTo(window.explorerDiv);
+
+  var views = [
+    {
+      id: 'grid',
+      label: 'Grid',
+      view: new recline.View.SlickGrid({
+        model: dataset
+      })
+    },
+    {
+      id: 'graph',
+      label: 'Graph',
+      view: new recline.View.Graph({
+        model: dataset
+      })
+    },
+    {
+      id: 'map',
+      label: 'Map',
+      view: new recline.View.Map({
+        model: dataset
+      })
+    }
+    
+  ];
+  window.dataExplorer = new recline.View.MultiView({
+    model: dataset,
+    el: $el,
+    state: state,
+    views: views
+  });
+
+var $el = $('#mytimeline');
+var timeline = new recline.View.Timeline({
+  model: dataset
+});
+$el.append(timeline.el);
+// set the headline/title for each record with x column
+timeline.convertRecord = function(record, fields) {
+  var out = this._convertRecord(record);
+  if (out) {
+    out.headline = record.get('id').toString();
+  }
+  return out;
+}
+timeline.render();
+
+var $el = $('#mymap');
+var map = new recline.View.Map({
+  model: dataset
+});
+$el.append(map.el);
+map.render();
+}
+
+</script>
+
+</div>
+
+
+<script type="text/javascript">
+(function () {
+$.getScript('http://spreadsheets.google.com/tq?key='+gskey+'&range=wocum!A:D&tq=select%20B,C,D%20where%20A%20%3D%20%22'+slug+'%22&tqx=responseHandler:pageHandler');
+})()
+</script>
+</body></html>
