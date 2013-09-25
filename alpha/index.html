@@ -136,7 +136,7 @@ function pageHandler(response) {
 console.log(window.wocumRelationsTemplate);
         var handlebarsHTML = template(window.wocumJSON);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
-	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+window.wocumObjectName+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
+	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cspan%20class%3D%22wocum-field-value%22%3E%3Cwocum-link%3E'+window.wocumObjectName+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
     } catch (err) {
         $.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!A:C&tq=select%20B,C%20where%20A%20%3D%20%22non-existing%22&tqx=responseHandler:nonExistingPageHandler');
     }
