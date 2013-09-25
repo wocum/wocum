@@ -123,16 +123,17 @@ function GetURLParameter(sParam) {
 }
 var gskey = GetURLParameter('key') || '0AkYWdwxH6K5XdFRILW9XRzRicjhZZU9icXlNckFtdUE';
 var slug = GetURLParameter('id') || 'home';
-document.title = "wocum - " + slug;
 
 function pageHandler(response) {
     try {
         wocumJSONString = response.table.rows[0].c[0].v;
         window.wocumJSON = jQuery.parseJSON(wocumJSONString);
     	window.wocumObjectName = window.wocumJSON.name;
+	document.title = "wocum - " + window.wocumObjectName;
         wocumTemplate = response.table.rows[0].c[1].v;
         var template = Handlebars.compile(wocumTemplate);
-        window.wocumListTemplate = response.table.rows[0].c[2].v;
+        window.wocumRelationsTemplate = response.table.rows[0].c[2].v;
+console.log(window.wocumRelationsTemplate);
         var handlebarsHTML = template(window.wocumJSON);
         document.getElementById("wocum").innerHTML = handlebarsHTML;
 	$.getScript('http://spreadsheets.google.com/tq?key=' + gskey + '&range=wocum!B:E&tq=select%20B%20where%20E%20contains%20%22%3Cwocum-link%3E'+window.wocumObjectName+'%3C%2Fwocum-link%3E%22&tqx=responseHandler:incomingRelationsHandler');
@@ -162,7 +163,7 @@ try {
     });
     incomingRelations = '{"relations":[' + incomingRelationsRaw + ']}';
     if (typeof incomingRelations !== 'undefined' && incomingRelations.length > 0) {
-        var templateRelations = Handlebars.compile(window.wocumListTemplate);
+        var templateRelations = Handlebars.compile(window.wocumRelationsTemplate);
         var context = jQuery.parseJSON(incomingRelations);
         var handlebarsHTML = templateRelations(context);
 	try {
