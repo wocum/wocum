@@ -170,7 +170,7 @@ try {
         var handlebarsHTML = templateRelations(context);
 	try {
 		document.getElementById("wocum-relations-list").innerHTML=handlebarsHTML;
-	        var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
+	        var showRelations = document.getElementById("wocum-relations-list").style.display = 'inline';
 	} catch (err) {
 	}
         window.wocumRelationsDatasetString = "{\"records\":[" + incomingRelationsRaw + "],\"fields\":[{\"id\": \"link\"},{\"id\": \"date\", \"type\": \"date\"},{\"id\": \"start\", \"type\": \"date\"},{\"id\": \"end\", \"type\": \"date\"},{\"id\": \"rating\", \"type\": \"number\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}";
