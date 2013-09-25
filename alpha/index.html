@@ -175,7 +175,6 @@ try {
         var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
 	} catch (err) {
 	}
-	}
         window.wocumRelationsDatasetString = "{\"records\":[" + incomingRelationsRaw + "],\"fields\":[{\"id\": \"link\"},{\"id\": \"date\", \"type\": \"date\"},{\"id\": \"start\", \"type\": \"date\"},{\"id\": \"end\", \"type\": \"date\"},{\"id\": \"rating\", \"type\": \"number\"},{\"id\": \"location\", \"type\": \"geo_point\"}]}";
         window.wocumRelationsDatasetJSON = jQuery.parseJSON(window.wocumRelationsDatasetString.replace('"','\"'));
         try {
