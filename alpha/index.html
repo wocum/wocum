@@ -169,7 +169,7 @@ try {
         var context = jQuery.parseJSON(incomingRelations);
         var handlebarsHTML = templateRelations(context);
 	try {
-		document.getElementById("wocum-relations").innerHTML=handlebarsHTML;
+		document.getElementById("wocum-relations-list").innerHTML=handlebarsHTML;
 	        var showRelations = document.getElementById("wocum-relations").style.display = 'inline';
 	} catch (err) {
 	}
